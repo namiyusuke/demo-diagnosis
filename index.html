@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>子供の能力診断</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .result {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>子供の能力診断</h1>
+      <form id="abilityForm">
+        <div class="question">
+          <label>週に何回運動をしていますか？</label>
+          <select name="physical1">
+            <option value="1">0回</option>
+            <option value="2">1-2回</option>
+            <option value="3">3-4回</option>
+            <option value="4">5回以上</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>どの程度の運動量をこなしますか？</label>
+          <select name="physical2">
+            <option value="1">軽い運動（散歩など）</option>
+            <option value="2">中程度の運動（ジョギング、サイクリングなど）</option>
+            <option value="3">激しい運動（スポーツ競技、トレーニングなど）</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>身体のバランス感覚が良いですか？</label>
+          <select name="physical3">
+            <option value="4">とても良い</option>
+            <option value="3">普通</option>
+            <option value="2">少し苦手</option>
+            <option value="1">とても苦手</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>新しい知識をどのくらい速く吸収しますか？</label>
+          <select name="brain1">
+            <option value="4">とても速い</option>
+            <option value="3">速い</option>
+            <option value="2">普通</option>
+            <option value="1">遅い</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>論理的な問題を解くのが得意ですか？</label>
+          <select name="brain2">
+            <option value="4">とても得意</option>
+            <option value="3">得意</option>
+            <option value="2">普通</option>
+            <option value="1">苦手</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>読書が好きですか？</label>
+          <select name="brain3">
+            <option value="4">とても好き</option>
+            <option value="3">普通</option>
+            <option value="2">あまり好きではない</option>
+            <option value="1">全く好きではない</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>どのくらいクリエイティブな活動をしていますか？</label>
+          <select name="talent1">
+            <option value="4">毎日</option>
+            <option value="3">週に数回</option>
+            <option value="2">時々</option>
+            <option value="1">ほとんどしない</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>新しいアイデアを考えるのが得意ですか？</label>
+          <select name="talent2">
+            <option value="4">とても得意</option>
+            <option value="3">得意</option>
+            <option value="2">普通</option>
+            <option value="1">苦手</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>舞台やパフォーマンスに興味がありますか？</label>
+          <select name="talent3">
+            <option value="4">とても興味がある</option>
+            <option value="3">興味がある</option>
+            <option value="2">少し興味がある</option>
+            <option value="1">全く興味がない</option>
+          </select>
+        </div>
+        <button type="button" onclick="calculateResults()">診断する</button>
+      </form>
+      <div id="result" class="result" style="display: none"></div>
+    </div>
+    <script>
+      function calculateResults() {
+        const form = document.forms["abilityForm"];
+        let physicalScore = 0;
+        let brainScore = 0;
+        let talentScore = 0;
+        physicalScore += parseInt(form["physical1"].value);
+        physicalScore += parseInt(form["physical2"].value);
+        physicalScore += parseInt(form["physical3"].value);
+        brainScore += parseInt(form["brain1"].value);
+        brainScore += parseInt(form["brain2"].value);
+        brainScore += parseInt(form["brain3"].value);
+        talentScore += parseInt(form["talent1"].value);
+        talentScore += parseInt(form["talent2"].value);
+        talentScore += parseInt(form["talent3"].value);
+        const physicalResult = getCategoryResult(physicalScore);
+        const brainResult = getCategoryResult(brainScore);
+        const talentResult = getCategoryResult(talentScore);
+        document.getElementById("result").innerHTML = `
+              <p>身体能力: ${physicalResult}</p>
+              <p>頭脳: ${brainResult}</p>
+              <p>才能: ${talentResult}</p>
+              <p>総合評価: ${getOverallEvaluation(physicalResult, brainResult, talentResult)}</p>
+          `;
+        document.getElementById("result").style.display = "block";
+      }
+      function getCategoryResult(score) {
+        if (score >= 10) {
+          return "非常に高い";
+        } else if (score >= 7) {
+          return "高い";
+        } else if (score >= 4) {
+          return "普通";
+        } else {
+          return "低い";
+        }
+      }
+      function getOverallEvaluation(physical, brain, talent) {
+        if (physical === "非常に高い" || brain === "非常に高い" || talent === "非常に高い") {
+          return "子供は特に優れた能力を持っています。バランスの取れた成長が期待できます。";
+        } else if (physical === "高い" || brain === "高い" || talent === "高い") {
+          return "子供は優れた能力を持っています。さらなる強化を図ると良いでしょう。";
+        } else {
+          return "子供の成長をサポートするために、さまざまな活動に取り組むことをお勧めします。";
+        }
+      }
+    </script>
+  </body>
+</html>

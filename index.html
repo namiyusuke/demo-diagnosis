@@ -114,6 +114,7 @@
         <button type="button" onclick="calculateResults()">診断する</button>
       </form>
       <div id="result" class="result" style="display: none"></div>
+      <div id="recommendation" class="result" style="display: none"></div>
     </div>
     <script>
       function calculateResults() {
@@ -134,12 +135,13 @@
         const brainResult = getCategoryResult(brainScore);
         const talentResult = getCategoryResult(talentScore);
         document.getElementById("result").innerHTML = `
-              <p>身体能力: ${physicalResult}</p>
-              <p>頭脳: ${brainResult}</p>
-              <p>才能: ${talentResult}</p>
-              <p>総合評価: ${getOverallEvaluation(physicalResult, brainResult, talentResult)}</p>
-          `;
+                <p>身体能力: ${physicalResult}</p>
+                <p>頭脳: ${brainResult}</p>
+                <p>才能: ${talentResult}</p>
+                <p>総合評価: ${getOverallEvaluation(physicalResult, brainResult, talentResult)}</p>
+            `;
         document.getElementById("result").style.display = "block";
+        displayRecommendations(physicalResult, brainResult, talentResult);
       }
       function getCategoryResult(score) {
         if (score >= 10) {
@@ -160,6 +162,35 @@
         } else {
           return "子供の成長をサポートするために、さまざまな活動に取り組むことをお勧めします。";
         }
+      }
+      function displayRecommendations(physical, brain, talent) {
+        const recommendations = {
+          physical: {
+            非常に高い: ["スポーツ競技", "体操", "ダンス", "武道"],
+            高い: ["スイミング", "サッカー", "バスケットボール", "陸上競技"],
+            普通: ["ジョギング", "サイクリング", "アウトドアアクティビティ"],
+            低い: ["ヨガ", "ウォーキング", "軽い体操"],
+          },
+          brain: {
+            非常に高い: ["数学クラブ", "科学実験教室", "プログラミング教室", "チェスクラブ"],
+            高い: ["読書クラブ", "図書館活動", "歴史教室", "外国語教室"],
+            普通: ["一般的な学習塾", "英会話教室", "書道教室"],
+            低い: ["学習支援教室", "基礎学習教室"],
+          },
+          talent: {
+            非常に高い: ["音楽教室（ピアノ、バイオリンなど）", "アートクラス", "演劇教室", "ダンス教室"],
+            高い: ["書道教室", "クラフト教室", "料理教室"],
+            普通: ["楽器演奏教室", "絵画教室", "手芸教室"],
+            低い: ["趣味として楽しめる軽いアートやクラフト活動"],
+          },
+        };
+        document.getElementById("recommendation").innerHTML = `
+                <h2>おすすめの習い事</h2>
+                <p>身体能力: ${recommendations.physical[physical].join(", ")}</p>
+                <p>頭脳: ${recommendations.brain[brain].join(", ")}</p>
+                <p>才能: ${recommendations.talent[talent].join(", ")}</p>
+            `;
+        document.getElementById("recommendation").style.display = "block";
       }
     </script>
   </body>

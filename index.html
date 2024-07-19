@@ -9,21 +9,17 @@
         font-family: Arial, sans-serif;
       }
       .container {
-        width: 80%;
+        max-width: 600px;
         margin: 0 auto;
+        padding: 20px;
       }
       .question {
         margin-bottom: 20px;
       }
-      .question label {
-        display: block;
-        margin-bottom: 5px;
-      }
       .result {
         margin-top: 20px;
-        padding: 10px;
+        background-color: rgb(179, 179, 179);
         border: 1px solid #ccc;
-        background-color: #f9f9f9;
       }
     </style>
   </head>
@@ -31,84 +27,150 @@
     <div class="container">
       <h1>子供の能力診断</h1>
       <form id="abilityForm">
+        <!-- 気質診断 -->
+        <h2>気質診断</h2>
         <div class="question">
-          <label>週に何回運動をしていますか？</label>
-          <select name="physical1">
-            <option value="1">0回</option>
-            <option value="2">1-2回</option>
-            <option value="3">3-4回</option>
-            <option value="4">5回以上</option>
+          <label>すば抜けた探究心・好奇心で大人顔負けの知的行動をする</label>
+          <select name="temperament1">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>どの程度の運動量をこなしますか？</label>
-          <select name="physical2">
-            <option value="1">軽い運動（散歩など）</option>
-            <option value="2">中程度の運動（ジョギング、サイクリングなど）</option>
-            <option value="3">激しい運動（スポーツ競技、トレーニングなど）</option>
+          <label>真面目でしっかり者、きちんと物事をこなす</label>
+          <select name="temperament2">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>身体のバランス感覚が良いですか？</label>
-          <select name="physical3">
-            <option value="4">とても良い</option>
-            <option value="3">普通</option>
-            <option value="2">少し苦手</option>
-            <option value="1">とても苦手</option>
+          <label>情緒が安定していて、普段は穏やか</label>
+          <select name="temperament3">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>新しい知識をどのくらい速く吸収しますか？</label>
-          <select name="brain1">
-            <option value="4">とても速い</option>
-            <option value="3">速い</option>
-            <option value="2">普通</option>
-            <option value="1">遅い</option>
+          <label>外向的で活発、誰とでもすぐ仲良くなれる</label>
+          <select name="temperament4">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>論理的な問題を解くのが得意ですか？</label>
-          <select name="brain2">
-            <option value="4">とても得意</option>
-            <option value="3">得意</option>
-            <option value="2">普通</option>
-            <option value="1">苦手</option>
+          <label>思いやりがあり親切で、優しい人柄</label>
+          <select name="temperament5">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
+        <!-- 才能診断 -->
+        <h2>才能診断</h2>
         <div class="question">
-          <label>読書が好きですか？</label>
-          <select name="brain3">
-            <option value="4">とても好き</option>
-            <option value="3">普通</option>
-            <option value="2">あまり好きではない</option>
-            <option value="1">全く好きではない</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>どのくらいクリエイティブな活動をしていますか？</label>
+          <label>立体パズルやオセロ、将棋など頭を使う遊びが好き</label>
           <select name="talent1">
-            <option value="4">毎日</option>
-            <option value="3">週に数回</option>
-            <option value="2">時々</option>
-            <option value="1">ほとんどしない</option>
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>新しいアイデアを考えるのが得意ですか？</label>
+          <label>読書が好き、物語を考えるのが得意</label>
           <select name="talent2">
-            <option value="4">とても得意</option>
-            <option value="3">得意</option>
-            <option value="2">普通</option>
-            <option value="1">苦手</option>
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <div class="question">
-          <label>舞台やパフォーマンスに興味がありますか？</label>
+          <label>体を動かすことが好き、バランス感覚が良い</label>
           <select name="talent3">
-            <option value="4">とても興味がある</option>
-            <option value="3">興味がある</option>
-            <option value="2">少し興味がある</option>
-            <option value="1">全く興味がない</option>
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>歌や楽器演奏が好き、音楽に合わせて体が自然に反応する</label>
+          <select name="talent4">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>絵を描くことやクラフトが好き、視覚的な表現に興味がある</label>
+          <select name="talent5">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <!-- 素質診断 -->
+        <h2>素質診断</h2>
+        <div class="question">
+          <label>同年代の子どもと比べて、背が高い</label>
+          <select name="aptitude1">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>骨格がしっかりしていて、体が丈夫に見える</label>
+          <select name="aptitude2">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>柔軟な体を持ち、体を動かすことが得意</label>
+          <select name="aptitude3">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>記憶力が良く、一度覚えたことを忘れにくい</label>
+          <select name="aptitude4">
+            <option value="0">まったく当てはまらない</option>
+            <option value="1">やや当てはまらない</option>
+            <option value="2">どちらともいえない</option>
+            <option value="3">やや当てはまる</option>
+            <option value="4">完全に当てはまる</option>
           </select>
         </div>
         <button type="button" onclick="calculateResults()">診断する</button>
@@ -119,77 +181,106 @@
     <script>
       function calculateResults() {
         const form = document.forms["abilityForm"];
-        let physicalScore = 0;
-        let brainScore = 0;
-        let talentScore = 0;
-        physicalScore += parseInt(form["physical1"].value);
-        physicalScore += parseInt(form["physical2"].value);
-        physicalScore += parseInt(form["physical3"].value);
-        brainScore += parseInt(form["brain1"].value);
-        brainScore += parseInt(form["brain2"].value);
-        brainScore += parseInt(form["brain3"].value);
-        talentScore += parseInt(form["talent1"].value);
-        talentScore += parseInt(form["talent2"].value);
-        talentScore += parseInt(form["talent3"].value);
-        const physicalResult = getCategoryResult(physicalScore);
-        const brainResult = getCategoryResult(brainScore);
-        const talentResult = getCategoryResult(talentScore);
+        let temperamentScores = [0, 0, 0, 0, 0];
+        let talentScores = [0, 0, 0, 0, 0];
+        let aptitudeScores = [0, 0, 0, 0];
+        for (let i = 0; i < 5; i++) {
+          temperamentScores[i] = parseInt(form[`temperament${i + 1}`].value);
+          talentScores[i] = parseInt(form[`talent${i + 1}`].value);
+        }
+        for (let i = 0; i < 4; i++) {
+          aptitudeScores[i] = parseInt(form[`aptitude${i + 1}`].value);
+        }
+        const temperamentResult = calculateCategory(temperamentScores);
+        const talentResult = calculateCategory(talentScores);
+        const aptitudeResult = calculateAptitude(aptitudeScores);
+        const temperamentType = getResultType(temperamentResult);
+        const talentType = getResultType(talentResult);
+        const aptitudeType = getAptitudeResultType(aptitudeResult);
         document.getElementById("result").innerHTML = `
-                <p>身体能力: ${physicalResult}</p>
-                <p>頭脳: ${brainResult}</p>
-                <p>才能: ${talentResult}</p>
-                <p>総合評価: ${getOverallEvaluation(physicalResult, brainResult, talentResult)}</p>
+                <p>気質: ${temperamentType}</p>
+                <p>才能: ${talentType}</p>
+                <p>素質: ${aptitudeType}</p>
+                <p>${getDescription(temperamentType, "気質")}</p>
+                <p>${getDescription(talentType, "才能")}</p>
+                <p>${getDescription(aptitudeType, "素質")}</p>
             `;
         document.getElementById("result").style.display = "block";
-        displayRecommendations(physicalResult, brainResult, talentResult);
+        displayRecommendations(temperamentType, talentType, aptitudeType);
       }
-      function getCategoryResult(score) {
-        if (score >= 10) {
-          return "非常に高い";
-        } else if (score >= 7) {
-          return "高い";
-        } else if (score >= 4) {
-          return "普通";
-        } else {
-          return "低い";
-        }
+      function calculateCategory(scores) {
+        return scores.reduce((a, b) => a + b, 0);
       }
-      function getOverallEvaluation(physical, brain, talent) {
-        if (physical === "非常に高い" || brain === "非常に高い" || talent === "非常に高い") {
-          return "子供は特に優れた能力を持っています。バランスの取れた成長が期待できます。";
-        } else if (physical === "高い" || brain === "高い" || talent === "高い") {
-          return "子供は優れた能力を持っています。さらなる強化を図ると良いでしょう。";
-        } else {
-          return "子供の成長をサポートするために、さまざまな活動に取り組むことをお勧めします。";
-        }
+      function calculateAptitude(scores) {
+        return scores.reduce((a, b) => a + b, 0);
       }
-      function displayRecommendations(physical, brain, talent) {
-        const recommendations = {
-          physical: {
-            非常に高い: ["スポーツ競技", "体操", "ダンス", "武道"],
-            高い: ["スイミング", "サッカー", "バスケットボール", "陸上競技"],
-            普通: ["ジョギング", "サイクリング", "アウトドアアクティビティ"],
-            低い: ["ヨガ", "ウォーキング", "軽い体操"],
+      function getResultType(score) {
+        if (score >= 14) return "非常に高い";
+        if (score >= 10) return "高い";
+        if (score >= 6) return "普通";
+        return "低い";
+      }
+      function getAptitudeResultType(score) {
+        if (score >= 11) return "非常に高い";
+        if (score >= 8) return "高い";
+        if (score >= 5) return "普通";
+        return "低い";
+      }
+      function getDescription(type, category) {
+        const descriptions = {
+          気質: {
+            非常に高い: "お子様の気質は非常に高いです。非常に高い探究心と好奇心を持っており、知的な行動が目立ちます。",
+            高い: "お子様の気質は高いです。しっかりとした知的行動が見られます。",
+            普通: "お子様の気質は普通です。一般的なレベルの探究心と好奇心を持っています。",
+            低い: "お子様の気質は低いです。探究心や好奇心がやや控えめです。",
           },
-          brain: {
-            非常に高い: ["数学クラブ", "科学実験教室", "プログラミング教室", "チェスクラブ"],
-            高い: ["読書クラブ", "図書館活動", "歴史教室", "外国語教室"],
-            普通: ["一般的な学習塾", "英会話教室", "書道教室"],
-            低い: ["学習支援教室", "基礎学習教室"],
+          才能: {
+            非常に高い: "お子様の才能は非常に高いです。特定の分野で際立った才能を持っています。",
+            高い: "お子様の才能は高いです。いくつかの分野で優れた能力が見られます。",
+            普通: "お子様の才能は普通です。さまざまな活動に平均的に取り組むことができます。",
+            低い: "お子様の才能は低いです。特定の分野での才能は控えめですが、成長の可能性があります。",
           },
-          talent: {
-            非常に高い: ["音楽教室（ピアノ、バイオリンなど）", "アートクラス", "演劇教室", "ダンス教室"],
-            高い: ["書道教室", "クラフト教室", "料理教室"],
-            普通: ["楽器演奏教室", "絵画教室", "手芸教室"],
-            低い: ["趣味として楽しめる軽いアートやクラフト活動"],
+          素質: {
+            非常に高い: "お子様の素質は非常に高いです。身体的な能力が非常に優れています。",
+            高い: "お子様の素質は高いです。しっかりとした身体能力があります。",
+            普通: "お子様の素質は普通です。平均的な身体能力を持っています。",
+            低い: "お子様の素質は低いです。身体的な能力はやや控えめですが、成長の可能性があります。",
           },
         };
-        document.getElementById("recommendation").innerHTML = `
-                <h2>おすすめの習い事</h2>
-                <p>身体能力: ${recommendations.physical[physical].join(", ")}</p>
-                <p>頭脳: ${recommendations.brain[brain].join(", ")}</p>
-                <p>才能: ${recommendations.talent[talent].join(", ")}</p>
-            `;
+        return descriptions[category][type];
+      }
+      function displayRecommendations(temperamentType, talentType, aptitudeType) {
+        const recommendations = {
+          気質: {
+            非常に高い: ["科学実験教室", "ロボット教室", "英会話"],
+            高い: ["読書クラブ", "絵画教室", "ピアノ教室"],
+            普通: ["スポーツクラブ", "ダンス教室", "合唱団"],
+            低い: ["リトミック教室", "お料理教室", "手芸クラブ"],
+          },
+          才能: {
+            非常に高い: ["プログラミング教室", "数学塾", "アートクラス"],
+            高い: ["科学実験教室", "音楽教室", "スポーツクラブ"],
+            普通: ["読書クラブ", "ダンス教室", "英会話"],
+            低い: ["手芸クラブ", "リトミック教室", "お料理教室"],
+          },
+          素質: {
+            非常に高い: ["サッカークラブ", "バレエ教室", "体操教室"],
+            高い: ["バスケットボールクラブ", "水泳教室", "空手教室"],
+            普通: ["テニス教室", "ダンス教室", "リトミック教室"],
+            低い: ["絵画教室", "読書クラブ", "手芸クラブ"],
+          },
+        };
+        let recommendationText = "<h3>おすすめの習い事</h3>";
+        const combinedRecommendations = [
+          ...recommendations["気質"][temperamentType],
+          ...recommendations["才能"][talentType],
+          ...recommendations["素質"][aptitudeType],
+        ];
+        const uniqueRecommendations = [...new Set(combinedRecommendations)].slice(0, 10);
+        uniqueRecommendations.forEach((recommendation, index) => {
+          recommendationText += `<p>${index + 1}. ${recommendation}</p>`;
+        });
+        document.getElementById("recommendation").innerHTML = recommendationText;
         document.getElementById("recommendation").style.display = "block";
       }
     </script>

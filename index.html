@@ -18,8 +18,7 @@
       }
       .result {
         margin-top: 20px;
-        background-color: rgb(179, 179, 179);
-        border: 1px solid #ccc;
+        background-color: rgb(150, 150, 150);
       }
     </style>
   </head>
@@ -193,17 +192,18 @@
         }
         const temperamentResult = calculateCategory(temperamentScores);
         const talentResult = calculateCategory(talentScores);
-        const aptitudeResult = calculateAptitude(aptitudeScores);
-        const temperamentType = getResultType(temperamentResult);
-        const talentType = getResultType(talentResult);
-        const aptitudeType = getAptitudeResultType(aptitudeResult);
+        const aptitudeResult = calculateCategory(aptitudeScores);
+        const temperamentType = getTemperamentType(temperamentResult);
+        const talentType = getTalentType(talentResult);
+        const aptitudeType = getAptitudeType(aptitudeResult);
         document.getElementById("result").innerHTML = `
+                <h3>診断結果</h3>
                 <p>気質: ${temperamentType}</p>
+                <p>${getTemperamentDescription(temperamentType)}</p>
                 <p>才能: ${talentType}</p>
+                <p>${getTalentDescription(talentType)}</p>
                 <p>素質: ${aptitudeType}</p>
-                <p>${getDescription(temperamentType, "気質")}</p>
-                <p>${getDescription(talentType, "才能")}</p>
-                <p>${getDescription(aptitudeType, "素質")}</p>
+                <p>${getAptitudeDescription(aptitudeType)}</p>
             `;
         document.getElementById("result").style.display = "block";
         displayRecommendations(temperamentType, talentType, aptitudeType);
@@ -211,75 +211,128 @@
       function calculateCategory(scores) {
         return scores.reduce((a, b) => a + b, 0);
       }
-      function calculateAptitude(scores) {
-        return scores.reduce((a, b) => a + b, 0);
-      }
-      function getResultType(score) {
+      function getTemperamentType(score) {
         if (score >= 14) return "非常に高い";
         if (score >= 10) return "高い";
         if (score >= 6) return "普通";
         return "低い";
       }
-      function getAptitudeResultType(score) {
+      function getTalentType(score) {
+        if (score >= 14) return "非常に高い";
+        if (score >= 10) return "高い";
+        if (score >= 6) return "普通";
+        return "低い";
+      }
+      function getAptitudeType(score) {
         if (score >= 11) return "非常に高い";
         if (score >= 8) return "高い";
         if (score >= 5) return "普通";
         return "低い";
       }
-      function getDescription(type, category) {
-        const descriptions = {
-          気質: {
-            非常に高い: "お子様の気質は非常に高いです。非常に高い探究心と好奇心を持っており、知的な行動が目立ちます。",
-            高い: "お子様の気質は高いです。しっかりとした知的行動が見られます。",
-            普通: "お子様の気質は普通です。一般的なレベルの探究心と好奇心を持っています。",
-            低い: "お子様の気質は低いです。探究心や好奇心がやや控えめです。",
-          },
-          才能: {
-            非常に高い: "お子様の才能は非常に高いです。特定の分野で際立った才能を持っています。",
-            高い: "お子様の才能は高いです。いくつかの分野で優れた能力が見られます。",
-            普通: "お子様の才能は普通です。さまざまな活動に平均的に取り組むことができます。",
-            低い: "お子様の才能は低いです。特定の分野での才能は控えめですが、成長の可能性があります。",
-          },
-          素質: {
-            非常に高い: "お子様の素質は非常に高いです。身体的な能力が非常に優れています。",
-            高い: "お子様の素質は高いです。しっかりとした身体能力があります。",
-            普通: "お子様の素質は普通です。平均的な身体能力を持っています。",
-            低い: "お子様の素質は低いです。身体的な能力はやや控えめですが、成長の可能性があります。",
-          },
-        };
-        return descriptions[category][type];
+      function getTemperamentDescription(type) {
+        switch (type) {
+          case "非常に高い":
+            return "お子様の気質は非常に高いです。非常に高い探究心と好奇心を持っており、知的な行動が目立ちます。また、真面目で誠実な性格も兼ね備えており、周囲から信頼される存在です。";
+          case "高い":
+            return "お子様の気質は高いです。しっかりとした知的行動が見られます。探究心もあり、周囲からも信頼されています。";
+          case "普通":
+            return "お子様の気質は普通です。一般的なレベルの探究心と好奇心を持っています。";
+          case "低い":
+            return "お子様の気質は低いです。探究心や好奇心がやや控えめですが、落ち着きがあり、安定した性格です。";
+        }
+      }
+      function getTalentDescription(type) {
+        switch (type) {
+          case "非常に高い":
+            return "お子様は非常に高い知的能力を持っており、立体パズルやオセロ、将棋などの遊びを楽しむことができます。また、読書や物語を考えることも得意で、創造力に富んでいます。音楽や視覚的な表現にも興味があり、多彩な才能を持っています。";
+          case "高い":
+            return "お子様は高い知的能力を持っています。知的遊びや読書が好きで、創造的な才能もあります。";
+          case "普通":
+            return "お子様の知的能力は普通です。一般的なレベルで楽しむことができます。";
+          case "低い":
+            return "お子様の知的能力はやや控えめですが、特定の分野において興味を持っている可能性があります。";
+        }
+      }
+      function getAptitudeDescription(type) {
+        switch (type) {
+          case "非常に高い":
+            return "お子様は非常に高い素質を持っています。特に柔軟な体と良い記憶力が際立っています。骨格もしっかりしており、体が丈夫に見えます。";
+          case "高い":
+            return "お子様は高い素質を持っています。柔軟性や記憶力が良く、体が丈夫です。";
+          case "普通":
+            return "お子様の素質は普通です。バランスの取れた素質を持っています。";
+          case "低い":
+            return "お子様の素質はやや控えめですが、特定の分野での素質が発揮される可能性があります。";
+        }
       }
       function displayRecommendations(temperamentType, talentType, aptitudeType) {
-        const recommendations = {
-          気質: {
-            非常に高い: ["科学実験教室", "ロボット教室", "英会話"],
-            高い: ["読書クラブ", "絵画教室", "ピアノ教室"],
-            普通: ["スポーツクラブ", "ダンス教室", "合唱団"],
-            低い: ["リトミック教室", "お料理教室", "手芸クラブ"],
-          },
-          才能: {
-            非常に高い: ["プログラミング教室", "数学塾", "アートクラス"],
-            高い: ["科学実験教室", "音楽教室", "スポーツクラブ"],
-            普通: ["読書クラブ", "ダンス教室", "英会話"],
-            低い: ["手芸クラブ", "リトミック教室", "お料理教室"],
-          },
-          素質: {
-            非常に高い: ["サッカークラブ", "バレエ教室", "体操教室"],
-            高い: ["バスケットボールクラブ", "水泳教室", "空手教室"],
-            普通: ["テニス教室", "ダンス教室", "リトミック教室"],
-            低い: ["絵画教室", "読書クラブ", "手芸クラブ"],
-          },
-        };
-        let recommendationText = "<h3>おすすめの習い事</h3>";
-        const combinedRecommendations = [
-          ...recommendations["気質"][temperamentType],
-          ...recommendations["才能"][talentType],
-          ...recommendations["素質"][aptitudeType],
+        const recommendations = [
+          { activity: "科学クラブ", suitability: 95 },
+          { activity: "数学クラブ", suitability: 90 },
+          { activity: "読書クラブ", suitability: 85 },
+          { activity: "作文教室", suitability: 80 },
+          { activity: "歴史クラブ", suitability: 75 },
+          { activity: "地理クラブ", suitability: 70 },
+          { activity: "天文学クラブ", suitability: 65 },
+          { activity: "ロボットクラブ", suitability: 60 },
+          { activity: "プログラミング教室", suitability: 55 },
+          { activity: "環境科学クラブ", suitability: 50 },
+          { activity: "絵画教室", suitability: 95 },
+          { activity: "陶芸教室", suitability: 90 },
+          { activity: "デザインクラブ", suitability: 85 },
+          { activity: "写真クラブ", suitability: 80 },
+          { activity: "演劇クラブ", suitability: 75 },
+          { activity: "ダンス教室", suitability: 70 },
+          { activity: "音楽教室", suitability: 65 },
+          { activity: "ピアノ教室", suitability: 60 },
+          { activity: "ギター教室", suitability: 55 },
+          { activity: "バレエ教室", suitability: 50 },
+          { activity: "サッカークラブ", suitability: 95 },
+          { activity: "野球クラブ", suitability: 90 },
+          { activity: "バスケットボールクラブ", suitability: 85 },
+          { activity: "体操教室", suitability: 80 },
+          { activity: "水泳教室", suitability: 75 },
+          { activity: "柔道教室", suitability: 70 },
+          { activity: "空手教室", suitability: 65 },
+          { activity: "テニスクラブ", suitability: 60 },
+          { activity: "スキー教室", suitability: 55 },
+          { activity: "クライミングクラブ", suitability: 50 },
+          { activity: "手芸クラブ", suitability: 95 },
+          { activity: "料理教室", suitability: 90 },
+          { activity: "木工教室", suitability: 85 },
+          { activity: "園芸クラブ", suitability: 80 },
+          { activity: "フィッシングクラブ", suitability: 75 },
+          { activity: "裁縫教室", suitability: 70 },
+          { activity: "ビーズクラフト教室", suitability: 65 },
+          { activity: "キャンプクラブ", suitability: 60 },
+          { activity: "DIYクラブ", suitability: 55 },
+          { activity: "模型クラブ", suitability: 50 },
+          { activity: "英語教室", suitability: 95 },
+          { activity: "フランス語教室", suitability: 90 },
+          { activity: "ドイツ語教室", suitability: 85 },
+          { activity: "スペイン語教室", suitability: 80 },
+          { activity: "中国語教室", suitability: 75 },
+          { activity: "日本語教室（外国人向け）", suitability: 70 },
+          { activity: "韓国語教室", suitability: 65 },
+          { activity: "イタリア語教室", suitability: 60 },
+          { activity: "ロシア語教室", suitability: 55 },
+          { activity: "アラビア語教室", suitability: 50 },
+          { activity: "囲碁クラブ", suitability: 95 },
+          { activity: "将棋クラブ", suitability: 90 },
+          { activity: "チェスクラブ", suitability: 85 },
+          { activity: "トランプクラブ", suitability: 80 },
+          { activity: "パズルクラブ", suitability: 75 },
+          { activity: "ボードゲームクラブ", suitability: 70 },
+          { activity: "昆虫観察クラブ", suitability: 65 },
+          { activity: "バードウォッチングクラブ", suitability: 60 },
+          { activity: "天体観測クラブ", suitability: 55 },
+          { activity: "乗馬クラブ", suitability: 50 },
         ];
-        const uniqueRecommendations = [...new Set(combinedRecommendations)].slice(0, 10);
-        uniqueRecommendations.forEach((recommendation, index) => {
-          recommendationText += `<p>${index + 1}. ${recommendation}</p>`;
+        let recommendationText = "<h3>おすすめの習い事</h3><ul>";
+        recommendations.slice(0, 10).forEach((recommendation) => {
+          recommendationText += `<li>${recommendation.activity}（適性度: ${recommendation.suitability}%）</li>`;
         });
+        recommendationText += "</ul>";
         document.getElementById("recommendation").innerHTML = recommendationText;
         document.getElementById("recommendation").style.display = "block";
       }

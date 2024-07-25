@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>子供の素質診断</title>
+    <style>
+      .section {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>子供の素質診断</h1>
+    <form id="soshitsuForm">
+      <div class="section">
+        <h2>外見的素質</h2>
+        <label for="appearance1">1. 背が高い</label><br />
+        <input type="radio" name="appearance1" value="はい" required />はい
+        <input type="radio" name="appearance1" value="いいえ" />いいえ<br />
+
+        <label for="appearance2">2. 体が大きい</label><br />
+        <input type="radio" name="appearance2" value="はい" required />はい
+        <input type="radio" name="appearance2" value="いいえ" />いいえ<br />
+
+        <!-- その他の外見的素質の質問 -->
+
+        <h2>身体的素質</h2>
+        <label for="physical1">1. 腕力が強い</label><br />
+        <input type="radio" name="physical1" value="はい" required />はい
+        <input type="radio" name="physical1" value="いいえ" />いいえ<br />
+
+        <label for="physical2">2. 握力が強い</label><br />
+        <input type="radio" name="physical2" value="はい" required />はい
+        <input type="radio" name="physical2" value="いいえ" />いいえ<br />
+
+        <!-- その他の身体的素質の質問 -->
+
+        <h2>頭脳的素質</h2>
+        <label for="mental1">1. 記憶力がずば抜けて良い</label><br />
+        <input type="radio" name="mental1" value="はい" required />はい
+        <input type="radio" name="mental1" value="いいえ" />いいえ<br />
+
+        <label for="mental2">2. 集中力がずば抜けて高い</label><br />
+        <input type="radio" name="mental2" value="はい" required />はい
+        <input type="radio" name="mental2" value="いいえ" />いいえ<br />
+
+        <!-- その他の頭脳的素質の質問 -->
+      </div>
+      <div>
+        <button type="button" onclick="generateSoshitsuDiagnosis()">診断結果を生成</button>
+      </div>
+    </form>
+    <div id="results" class="section"></div>
+
+    <script>
+      function generateSoshitsuDiagnosis() {
+        const appearanceScore = calculateAppearanceScore();
+        const physicalScore = calculatePhysicalScore();
+        const mentalScore = calculateMentalScore();
+
+        let resultsHTML = "<h3>素質の評価</h3>";
+        resultsHTML += `<p>外見的素質: ${evaluateCategory(appearanceScore, 20, "外見的素質")}</p>`;
+        resultsHTML += `<p>身体的素質: ${evaluateCategory(physicalScore, 18, "身体的素質")}</p>`;
+        resultsHTML += `<p>頭脳的素質: ${evaluateCategory(mentalScore, 9, "頭脳的素質")}</p>`;
+
+        document.getElementById("results").innerHTML = resultsHTML;
+      }
+
+      function calculateAppearanceScore() {
+        const appearanceQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        let score = 0;
+        appearanceQuestions.forEach((q) => {
+          if (document.querySelector(`input[name="appearance${q}"]:checked`).value === "はい") {
+            score++;
+          }
+        });
+        return score;
+      }
+
+      function calculatePhysicalScore() {
+        const physicalQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+        let score = 0;
+        physicalQuestions.forEach((q) => {
+          if (document.querySelector(`input[name="physical${q}"]:checked`).value === "はい") {
+            score++;
+          }
+        });
+        return score;
+      }
+
+      function calculateMentalScore() {
+        const mentalQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let score = 0;
+        mentalQuestions.forEach((q) => {
+          if (document.querySelector(`input[name="mental${q}"]:checked`).value === "はい") {
+            score++;
+          }
+        });
+        return score;
+      }
+
+      function evaluateCategory(score, total, categoryName) {
+        let percentage = (score / total) * 100;
+        let evaluation = "";
+
+        if (percentage >= 70) {
+          evaluation = `高い（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
+        } else if (percentage >= 30) {
+          evaluation = `普通（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
+        } else {
+          evaluation = `低い（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
+        }
+
+        return evaluation;
+      }
+
+      function generateSoshitsuDescription(score, categoryName) {
+        switch (categoryName) {
+          case "外見的素質":
+            if (score >= 14) {
+              return "背が高く、手足が長いなど、非常に優れた外見的特徴を持っています。モデルやスポーツ選手に向いています。";
+            } else if (score >= 6) {
+              return "背が高く、手足が長いなど、適度に優れた外見的特徴を持っています。";
+            } else {
+              return "外見的特徴にはあまり恵まれていませんが、他の素質で補うことができます。";
+            }
+          case "身体的素質":
+            if (score >= 13) {
+              return "バランス感覚が良く、敏しょう性が高いなど、非常に優れた身体能力を持っています。多くのスポーツで活躍できるでしょう。";
+            } else if (score >= 5) {
+              return "バランス感覚が良く、敏しょう性が高いなど、適度な身体能力を持っています。";
+            } else {
+              return "身体能力にはあまり恵まれていませんが、他の素質で補うことができます。";
+            }
+          case "頭脳的素質":
+            if (score >= 7) {
+              return "記憶力や集中力、理解力がずば抜けて高いなど、非常に優れた頭脳的素質を持っています。学問や研究に向いています。";
+            } else if (score >= 3) {
+              return "記憶力や集中力、理解力が適度に高いです。";
+            } else {
+              return "頭脳的素質にはあまり恵まれていませんが、他の素質で補うことができます。";
+            }
+        }
+      }
+    </script>
+  </body>
+</html>

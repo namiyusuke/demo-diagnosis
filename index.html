@@ -3,338 +3,202 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>子供の能力診断</title>
+    <title>子供の気質診断フォーム</title>
     <style>
       body {
         font-family: Arial, sans-serif;
+        margin: 20px;
       }
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .question {
+      .section {
         margin-bottom: 20px;
       }
-      .result {
-        margin-top: 20px;
-        background-color: rgb(150, 150, 150);
+      .section h2 {
+        margin-bottom: 10px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>子供の能力診断</h1>
-      <form id="abilityForm">
-        <!-- 気質診断 -->
+    <form id="traitForm">
+      <div class="section">
+        <h2>子供の情報</h2>
+        <label for="name">名前（ニックネーム）:</label>
+        <input type="text" id="name" name="name" required /><br />
+        <label for="gender">性別:</label>
+        <select id="gender" name="gender" required>
+          <option value="男の子">男の子</option>
+          <option value="女の子">女の子</option></select
+        ><br />
+        <label for="age">年齢:</label>
+        <input type="number" id="age" name="age" min="1" required />
+      </div>
+      <div class="section">
         <h2>気質診断</h2>
-        <div class="question">
-          <label>すば抜けた探究心・好奇心で大人顔負けの知的行動をする</label>
-          <select name="temperament1">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>真面目でしっかり者、きちんと物事をこなす</label>
-          <select name="temperament2">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>情緒が安定していて、普段は穏やか</label>
-          <select name="temperament3">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>外向的で活発、誰とでもすぐ仲良くなれる</label>
-          <select name="temperament4">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>思いやりがあり親切で、優しい人柄</label>
-          <select name="temperament5">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <!-- 才能診断 -->
-        <h2>才能診断</h2>
-        <div class="question">
-          <label>立体パズルやオセロ、将棋など頭を使う遊びが好き</label>
-          <select name="talent1">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>読書が好き、物語を考えるのが得意</label>
-          <select name="talent2">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>体を動かすことが好き、バランス感覚が良い</label>
-          <select name="talent3">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>歌や楽器演奏が好き、音楽に合わせて体が自然に反応する</label>
-          <select name="talent4">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>絵を描くことやクラフトが好き、視覚的な表現に興味がある</label>
-          <select name="talent5">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <!-- 素質診断 -->
-        <h2>素質診断</h2>
-        <div class="question">
-          <label>同年代の子どもと比べて、背が高い</label>
-          <select name="aptitude1">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>骨格がしっかりしていて、体が丈夫に見える</label>
-          <select name="aptitude2">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>柔軟な体を持ち、体を動かすことが得意</label>
-          <select name="aptitude3">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>記憶力が良く、一度覚えたことを忘れにくい</label>
-          <select name="aptitude4">
-            <option value="0">まったく当てはまらない</option>
-            <option value="1">やや当てはまらない</option>
-            <option value="2">どちらともいえない</option>
-            <option value="3">やや当てはまる</option>
-            <option value="4">完全に当てはまる</option>
-          </select>
-        </div>
-        <button type="button" onclick="calculateResults()">診断する</button>
-      </form>
-      <div id="result" class="result" style="display: none"></div>
-      <div id="recommendation" class="result" style="display: none"></div>
-    </div>
+        <!-- 気質診断項目（10項目） -->
+        <label for="q1">1. 好奇心が強く、新しいことに興味を持ちやすい</label><br />
+        <input type="radio" name="q1" value="4" required />完全に当てはまる
+        <input type="radio" name="q1" value="3" />まあまあ当てはまる
+        <input type="radio" name="q1" value="2" />どちらともいえない
+        <input type="radio" name="q1" value="1" />やや当てはまらない
+        <input type="radio" name="q1" value="0" />全く当てはまらない<br />
+
+        <label for="q2">2. 勤勉で真面目な性格</label><br />
+        <input type="radio" name="q2" value="4" required />完全に当てはまる
+        <input type="radio" name="q2" value="3" />まあまあ当てはまる
+        <input type="radio" name="q2" value="2" />どちらともいえない
+        <input type="radio" name="q2" value="1" />やや当てはまらない
+        <input type="radio" name="q2" value="0" />全く当てはまらない<br />
+
+        <label for="q3">3. 感情が安定しており、ストレスに強い</label><br />
+        <input type="radio" name="q3" value="4" required />完全に当てはまる
+        <input type="radio" name="q3" value="3" />まあまあ当てはまる
+        <input type="radio" name="q3" value="2" />どちらともいえない
+        <input type="radio" name="q3" value="1" />やや当てはまらない
+        <input type="radio" name="q3" value="0" />全く当てはまらない<br />
+
+        <label for="q4">4. 外向的で社交的</label><br />
+        <input type="radio" name="q4" value="4" required />完全に当てはまる
+        <input type="radio" name="q4" value="3" />まあまあ当てはまる
+        <input type="radio" name="q4" value="2" />どちらともいえない
+        <input type="radio" name="q4" value="1" />やや当てはまらない
+        <input type="radio" name="q4" value="0" />全く当てはまらない<br />
+
+        <label for="q5">5. 思いやりがあり、他人に対して親切</label><br />
+        <input type="radio" name="q5" value="4" required />完全に当てはまる
+        <input type="radio" name="q5" value="3" />まあまあ当てはまる
+        <input type="radio" name="q5" value="2" />どちらともいえない
+        <input type="radio" name="q5" value="1" />やや当てはまらない
+        <input type="radio" name="q5" value="0" />全く当てはまらない<br />
+
+        <label for="q6">6. ルーティンが好きで変化を嫌う</label><br />
+        <input type="radio" name="q6" value="4" required />完全に当てはまる
+        <input type="radio" name="q6" value="3" />まあまあ当てはまる
+        <input type="radio" name="q6" value="2" />どちらともいえない
+        <input type="radio" name="q6" value="1" />やや当てはまらない
+        <input type="radio" name="q6" value="0" />全く当てはまらない<br />
+
+        <label for="q7">7. 衝動的で行動が早い</label><br />
+        <input type="radio" name="q7" value="4" required />完全に当てはまる
+        <input type="radio" name="q7" value="3" />まあまあ当てはまる
+        <input type="radio" name="q7" value="2" />どちらともいえない
+        <input type="radio" name="q7" value="1" />やや当てはまらない
+        <input type="radio" name="q7" value="0" />全く当てはまらない<br />
+
+        <label for="q8">8. 感受性が豊かで繊細</label><br />
+        <input type="radio" name="q8" value="4" required />完全に当てはまる
+        <input type="radio" name="q8" value="3" />まあまあ当てはまる
+        <input type="radio" name="q8" value="2" />どちらともいえない
+        <input type="radio" name="q8" value="1" />やや当てはまらない
+        <input type="radio" name="q8" value="0" />全く当てはまらない<br />
+
+        <label for="q9">9. 内向的で一人の時間を大切にする</label><br />
+        <input type="radio" name="q9" value="4" required />完全に当てはまる
+        <input type="radio" name="q9" value="3" />まあまあ当てはまる
+        <input type="radio" name="q9" value="2" />どちらともいえない
+        <input type="radio" name="q9" value="1" />やや当てはまらない
+        <input type="radio" name="q9" value="0" />全く当てはまらない<br />
+
+        <label for="q10">10. 友好的でチームワークを重視する</label><br />
+        <input type="radio" name="q10" value="4" required />完全に当てはまる
+        <input type="radio" name="q10" value="3" />まあまあ当てはまる
+        <input type="radio" name="q10" value="2" />どちらともいえない
+        <input type="radio" name="q10" value="1" />やや当てはまらない
+        <input type="radio" name="q10" value="0" />全く当てはまらない<br />
+      </div>
+      <div>
+        <button type="button" onclick="generateTraitDiagnosis()">診断結果を生成</button>
+      </div>
+    </form>
+    <div id="traitResults" class="section"></div>
+
     <script>
-      function calculateResults() {
-        const form = document.forms["abilityForm"];
-        let temperamentScores = [0, 0, 0, 0, 0];
-        let talentScores = [0, 0, 0, 0, 0];
-        let aptitudeScores = [0, 0, 0, 0];
-        for (let i = 0; i < 5; i++) {
-          temperamentScores[i] = parseInt(form[`temperament${i + 1}`].value);
-          talentScores[i] = parseInt(form[`talent${i + 1}`].value);
-        }
-        for (let i = 0; i < 4; i++) {
-          aptitudeScores[i] = parseInt(form[`aptitude${i + 1}`].value);
-        }
-        const temperamentResult = calculateCategory(temperamentScores);
-        const talentResult = calculateCategory(talentScores);
-        const aptitudeResult = calculateCategory(aptitudeScores);
-        const temperamentType = getTemperamentType(temperamentResult);
-        const talentType = getTalentType(talentResult);
-        const aptitudeType = getAptitudeType(aptitudeResult);
-        document.getElementById("result").innerHTML = `
-                <h3>診断結果</h3>
-                <p>気質: ${temperamentType}</p>
-                <p>${getTemperamentDescription(temperamentType)}</p>
-                <p>才能: ${talentType}</p>
-                <p>${getTalentDescription(talentType)}</p>
-                <p>素質: ${aptitudeType}</p>
-                <p>${getAptitudeDescription(aptitudeType)}</p>
-            `;
-        document.getElementById("result").style.display = "block";
-        displayRecommendations(temperamentType, talentType, aptitudeType);
+      function generateTraitDiagnosis() {
+        const name = document.getElementById("name").value;
+        const gender = document.getElementById("gender").value;
+        const age = document.getElementById("age").value;
+
+        // 気質診断のスコアを計算
+        const openness = calculateScore([1, 6]);
+        const conscientiousness = calculateScore([2, 7]);
+        const emotional_stability = calculateScore([3, 8]);
+        const extraversion = calculateScore([4, 9]);
+        const agreeableness = calculateScore([5, 10]);
+
+        // 気質の評価結果を生成
+        const resultsDiv = document.getElementById("traitResults");
+        let resultsHTML = `<h2>${name}${gender === "男の子" ? "くん" : "ちゃん"}（${age}歳）の診断結果</h2>`;
+
+        // 気質の評価
+        resultsHTML += `<h3>気質の評価</h3>`;
+        resultsHTML += `<p>開放性: ${evaluateTrait(openness, "開放性")}</p>`;
+        resultsHTML += `<p>誠実性: ${evaluateTrait(conscientiousness, "誠実性")}</p>`;
+        resultsHTML += `<p>情緒安定性: ${evaluateTrait(emotional_stability, "情緒安定性")}</p>`;
+        resultsHTML += `<p>外向性: ${evaluateTrait(extraversion, "外向性")}</p>`;
+        resultsHTML += `<p>協調性: ${evaluateTrait(agreeableness, "協調性")}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
       }
-      function calculateCategory(scores) {
-        return scores.reduce((a, b) => a + b, 0);
-      }
-      function getTemperamentType(score) {
-        if (score >= 14) return "非常に高い";
-        if (score >= 10) return "高い";
-        if (score >= 6) return "普通";
-        return "低い";
-      }
-      function getTalentType(score) {
-        if (score >= 14) return "非常に高い";
-        if (score >= 10) return "高い";
-        if (score >= 6) return "普通";
-        return "低い";
-      }
-      function getAptitudeType(score) {
-        if (score >= 11) return "非常に高い";
-        if (score >= 8) return "高い";
-        if (score >= 5) return "普通";
-        return "低い";
-      }
-      function getTemperamentDescription(type) {
-        switch (type) {
-          case "非常に高い":
-            return "お子様の気質は非常に高いです。非常に高い探究心と好奇心を持っており、知的な行動が目立ちます。また、真面目で誠実な性格も兼ね備えており、周囲から信頼される存在です。";
-          case "高い":
-            return "お子様の気質は高いです。しっかりとした知的行動が見られます。探究心もあり、周囲からも信頼されています。";
-          case "普通":
-            return "お子様の気質は普通です。一般的なレベルの探究心と好奇心を持っています。";
-          case "低い":
-            return "お子様の気質は低いです。探究心や好奇心がやや控えめですが、落ち着きがあり、安定した性格です。";
-        }
-      }
-      function getTalentDescription(type) {
-        switch (type) {
-          case "非常に高い":
-            return "お子様は非常に高い知的能力を持っており、立体パズルやオセロ、将棋などの遊びを楽しむことができます。また、読書や物語を考えることも得意で、創造力に富んでいます。音楽や視覚的な表現にも興味があり、多彩な才能を持っています。";
-          case "高い":
-            return "お子様は高い知的能力を持っています。知的遊びや読書が好きで、創造的な才能もあります。";
-          case "普通":
-            return "お子様の知的能力は普通です。一般的なレベルで楽しむことができます。";
-          case "低い":
-            return "お子様の知的能力はやや控えめですが、特定の分野において興味を持っている可能性があります。";
-        }
-      }
-      function getAptitudeDescription(type) {
-        switch (type) {
-          case "非常に高い":
-            return "お子様は非常に高い素質を持っています。特に柔軟な体と良い記憶力が際立っています。骨格もしっかりしており、体が丈夫に見えます。";
-          case "高い":
-            return "お子様は高い素質を持っています。柔軟性や記憶力が良く、体が丈夫です。";
-          case "普通":
-            return "お子様の素質は普通です。バランスの取れた素質を持っています。";
-          case "低い":
-            return "お子様の素質はやや控えめですが、特定の分野での素質が発揮される可能性があります。";
-        }
-      }
-      function displayRecommendations(temperamentType, talentType, aptitudeType) {
-        const recommendations = [
-          { activity: "科学クラブ", suitability: 95 },
-          { activity: "数学クラブ", suitability: 90 },
-          { activity: "読書クラブ", suitability: 85 },
-          { activity: "作文教室", suitability: 80 },
-          { activity: "歴史クラブ", suitability: 75 },
-          { activity: "地理クラブ", suitability: 70 },
-          { activity: "天文学クラブ", suitability: 65 },
-          { activity: "ロボットクラブ", suitability: 60 },
-          { activity: "プログラミング教室", suitability: 55 },
-          { activity: "環境科学クラブ", suitability: 50 },
-          { activity: "絵画教室", suitability: 95 },
-          { activity: "陶芸教室", suitability: 90 },
-          { activity: "デザインクラブ", suitability: 85 },
-          { activity: "写真クラブ", suitability: 80 },
-          { activity: "演劇クラブ", suitability: 75 },
-          { activity: "ダンス教室", suitability: 70 },
-          { activity: "音楽教室", suitability: 65 },
-          { activity: "ピアノ教室", suitability: 60 },
-          { activity: "ギター教室", suitability: 55 },
-          { activity: "バレエ教室", suitability: 50 },
-          { activity: "サッカークラブ", suitability: 95 },
-          { activity: "野球クラブ", suitability: 90 },
-          { activity: "バスケットボールクラブ", suitability: 85 },
-          { activity: "体操教室", suitability: 80 },
-          { activity: "水泳教室", suitability: 75 },
-          { activity: "柔道教室", suitability: 70 },
-          { activity: "空手教室", suitability: 65 },
-          { activity: "テニスクラブ", suitability: 60 },
-          { activity: "スキー教室", suitability: 55 },
-          { activity: "クライミングクラブ", suitability: 50 },
-          { activity: "手芸クラブ", suitability: 95 },
-          { activity: "料理教室", suitability: 90 },
-          { activity: "木工教室", suitability: 85 },
-          { activity: "園芸クラブ", suitability: 80 },
-          { activity: "フィッシングクラブ", suitability: 75 },
-          { activity: "裁縫教室", suitability: 70 },
-          { activity: "ビーズクラフト教室", suitability: 65 },
-          { activity: "キャンプクラブ", suitability: 60 },
-          { activity: "DIYクラブ", suitability: 55 },
-          { activity: "模型クラブ", suitability: 50 },
-          { activity: "英語教室", suitability: 95 },
-          { activity: "フランス語教室", suitability: 90 },
-          { activity: "ドイツ語教室", suitability: 85 },
-          { activity: "スペイン語教室", suitability: 80 },
-          { activity: "中国語教室", suitability: 75 },
-          { activity: "日本語教室（外国人向け）", suitability: 70 },
-          { activity: "韓国語教室", suitability: 65 },
-          { activity: "イタリア語教室", suitability: 60 },
-          { activity: "ロシア語教室", suitability: 55 },
-          { activity: "アラビア語教室", suitability: 50 },
-          { activity: "囲碁クラブ", suitability: 95 },
-          { activity: "将棋クラブ", suitability: 90 },
-          { activity: "チェスクラブ", suitability: 85 },
-          { activity: "トランプクラブ", suitability: 80 },
-          { activity: "パズルクラブ", suitability: 75 },
-          { activity: "ボードゲームクラブ", suitability: 70 },
-          { activity: "昆虫観察クラブ", suitability: 65 },
-          { activity: "バードウォッチングクラブ", suitability: 60 },
-          { activity: "天体観測クラブ", suitability: 55 },
-          { activity: "乗馬クラブ", suitability: 50 },
-        ];
-        let recommendationText = "<h3>おすすめの習い事</h3><ul>";
-        recommendations.slice(0, 10).forEach((recommendation) => {
-          recommendationText += `<li>${recommendation.activity}（適性度: ${recommendation.suitability}%）</li>`;
+
+      function calculateScore(questions) {
+        let score = 0;
+        questions.forEach((q) => {
+          score += parseInt(document.querySelector(`input[name="q${q}"]:checked`).value);
         });
-        recommendationText += "</ul>";
-        document.getElementById("recommendation").innerHTML = recommendationText;
-        document.getElementById("recommendation").style.display = "block";
+        return score;
+      }
+
+      function evaluateTrait(score, traitName) {
+        let evaluation = "";
+        if (score >= 7) {
+          evaluation = `高い（${score}点）：${generateTraitDescription(score, traitName)}`;
+        } else if (score >= 4) {
+          evaluation = `普通（${score}点）：${generateTraitDescription(score, traitName)}`;
+        } else {
+          evaluation = `低い（${score}点）：${generateTraitDescription(score, traitName)}`;
+        }
+        return evaluation;
+      }
+
+      function generateTraitDescription(score, traitName) {
+        if (score >= 7) {
+          switch (traitName) {
+            case "開放性":
+              return `非常に高い探究心と好奇心を持ち、学ぶことが大好きです。`;
+            case "誠実性":
+              return `非常に計画的で、常に慎重に物事を進めます。`;
+            case "情緒安定性":
+              return `感情のコントロールが上手で、ストレスに対して非常に強いです。`;
+            case "外向性":
+              return `非常に社交的で、活発に友達と過ごすことができます。`;
+            case "協調性":
+              return `非常に思いやりがあり、他人の気持ちを深く理解することができます。`;
+          }
+        } else if (score >= 4) {
+          switch (traitName) {
+            case "開放性":
+              return `適度な探究心と好奇心を持ち、新しいことにも興味を示します。`;
+            case "誠実性":
+              return `計画性があり、慎重に物事を進めますが、時には柔軟に対応することもあります。`;
+            case "情緒安定性":
+              return `情緒が安定しており、ストレスに対して適度な耐性があります。`;
+            case "外向性":
+              return `社交的な面もありながら、一人の時間も大切にします。`;
+            case "協調性":
+              return `思いやりがあり、優しい性格ですが、自己主張も大切にします。`;
+          }
+        } else {
+          switch (traitName) {
+            case "開放性":
+              return `新しい経験に対して慎重で、変化をあまり好まない性格です。`;
+            case "誠実性":
+              return `計画性が低く、時に衝動的に行動することがあります。`;
+            case "情緒安定性":
+              return `感情の起伏が激しく、ストレスに弱い傾向があります。`;
+            case "外向性":
+              return `内向的で、静かな環境を好む性格です。`;
+            case "協調性":
+              return `自己中心的で、競争心が強い一面があります。`;
+          }
+        }
       }
     </script>
   </body>

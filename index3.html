@@ -2,146 +2,329 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>子供の素質診断</title>
     <style>
-      .section {
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h2,
+      h3 {
+        color: #2c3e50;
+      }
+      form {
         margin-bottom: 20px;
       }
     </style>
   </head>
   <body>
-    <h1>子供の素質診断</h1>
+    <h2>子供の素質診断フォーム</h2>
     <form id="soshitsuForm">
-      <div class="section">
-        <h2>外見的素質</h2>
-        <label for="appearance1">1. 背が高い</label><br />
-        <input type="radio" name="appearance1" value="はい" required />はい
-        <input type="radio" name="appearance1" value="いいえ" />いいえ<br />
-
-        <label for="appearance2">2. 体が大きい</label><br />
-        <input type="radio" name="appearance2" value="はい" required />はい
-        <input type="radio" name="appearance2" value="いいえ" />いいえ<br />
-
-        <!-- その他の外見的素質の質問 -->
-
-        <h2>身体的素質</h2>
-        <label for="physical1">1. 腕力が強い</label><br />
-        <input type="radio" name="physical1" value="はい" required />はい
-        <input type="radio" name="physical1" value="いいえ" />いいえ<br />
-
-        <label for="physical2">2. 握力が強い</label><br />
-        <input type="radio" name="physical2" value="はい" required />はい
-        <input type="radio" name="physical2" value="いいえ" />いいえ<br />
-
-        <!-- その他の身体的素質の質問 -->
-
-        <h2>頭脳的素質</h2>
-        <label for="mental1">1. 記憶力がずば抜けて良い</label><br />
-        <input type="radio" name="mental1" value="はい" required />はい
-        <input type="radio" name="mental1" value="いいえ" />いいえ<br />
-
-        <label for="mental2">2. 集中力がずば抜けて高い</label><br />
-        <input type="radio" name="mental2" value="はい" required />はい
-        <input type="radio" name="mental2" value="いいえ" />いいえ<br />
-
-        <!-- その他の頭脳的素質の質問 -->
-      </div>
       <div>
-        <button type="button" onclick="generateSoshitsuDiagnosis()">診断結果を生成</button>
+        <label for="name">名前（ニックネーム）:</label>
+        <input type="text" id="name" name="name" required /><br />
+        <label for="gender">性別:</label>
+        <input type="radio" id="gender_boy" name="gender" value="男の子" required />男の子
+        <input type="radio" id="gender_girl" name="gender" value="女の子" />女の子<br />
+        <label for="age">年齢:</label>
+        <input type="number" id="age" name="age" required /><br />
       </div>
+
+      <h3>外見的素質</h3>
+      <div>
+        <label for="height">背が高い:</label>
+        <input type="radio" id="height_yes" name="height" value="はい" required />はい
+        <input type="radio" id="height_no" name="height" value="いいえ" />いいえ<br />
+        <label for="large_body">体が大きい:</label>
+        <input type="radio" id="large_body_yes" name="large_body" value="はい" required />はい
+        <input type="radio" id="large_body_no" name="large_body" value="いいえ" />いいえ<br />
+        <label for="long_limbs">手足が長い:</label>
+        <input type="radio" id="long_limbs_yes" name="long_limbs" value="はい" required />はい
+        <input type="radio" id="long_limbs_no" name="long_limbs" value="いいえ" />いいえ<br />
+        <label for="long_neck">首が長い:</label>
+        <input type="radio" id="long_neck_yes" name="long_neck" value="はい" required />はい
+        <input type="radio" id="long_neck_no" name="long_neck" value="いいえ" />いいえ<br />
+        <label for="good_style">スタイルが良い:</label>
+        <input type="radio" id="good_style_yes" name="good_style" value="はい" required />はい
+        <input type="radio" id="good_style_no" name="good_style" value="いいえ" />いいえ<br />
+        <label for="handsome">容姿端麗:</label>
+        <input type="radio" id="handsome_yes" name="handsome" value="はい" required />はい
+        <input type="radio" id="handsome_no" name="handsome" value="いいえ" />いいえ<br />
+        <label for="big_eyes">目が大きい:</label>
+        <input type="radio" id="big_eyes_yes" name="big_eyes" value="はい" required />はい
+        <input type="radio" id="big_eyes_no" name="big_eyes" value="いいえ" />いいえ<br />
+        <label for="high_nose">鼻筋が高い:</label>
+        <input type="radio" id="high_nose_yes" name="high_nose" value="はい" required />はい
+        <input type="radio" id="high_nose_no" name="high_nose" value="いいえ" />いいえ<br />
+        <label for="small_face">顔が小さい:</label>
+        <input type="radio" id="small_face_yes" name="small_face" value="はい" required />はい
+        <input type="radio" id="small_face_no" name="small_face" value="いいえ" />いいえ<br />
+        <label for="sharp_features">目立ちがはっきりしている:</label>
+        <input type="radio" id="sharp_features_yes" name="sharp_features" value="はい" required />はい
+        <input type="radio" id="sharp_features_no" name="sharp_features" value="いいえ" />いいえ<br />
+        <label for="beautiful">美人:</label>
+        <input type="radio" id="beautiful_yes" name="beautiful" value="はい" required />はい
+        <input type="radio" id="beautiful_no" name="beautiful" value="いいえ" />いいえ<br />
+        <label for="cute_smile">笑顔がかわいい:</label>
+        <input type="radio" id="cute_smile_yes" name="cute_smile" value="はい" required />はい
+        <input type="radio" id="cute_smile_no" name="cute_smile" value="いいえ" />いいえ<br />
+        <label for="large_hands">手が大きい:</label>
+        <input type="radio" id="large_hands_yes" name="large_hands" value="はい" required />はい
+        <input type="radio" id="large_hands_no" name="large_hands" value="いいえ" />いいえ<br />
+        <label for="long_fingers">指が長い:</label>
+        <input type="radio" id="long_fingers_yes" name="long_fingers" value="はい" required />はい
+        <input type="radio" id="long_fingers_no" name="long_fingers" value="いいえ" />いいえ<br />
+        <label for="strong_bones">骨太:</label>
+        <input type="radio" id="strong_bones_yes" name="strong_bones" value="はい" required />はい
+        <input type="radio" id="strong_bones_no" name="strong_bones" value="いいえ" />いいえ<br />
+        <label for="sturdy_build">体格ががっちりしている:</label>
+        <input type="radio" id="sturdy_build_yes" name="sturdy_build" value="はい" required />はい
+        <input type="radio" id="sturdy_build_no" name="sturdy_build" value="いいえ" />いいえ<br />
+        <label for="broad_shoulders">肩幅が広い:</label>
+        <input type="radio" id="broad_shoulders_yes" name="broad_shoulders" value="はい" required />はい
+        <input type="radio" id="broad_shoulders_no" name="broad_shoulders" value="いいえ" />いいえ<br />
+        <label for="muscular">筋肉質:</label>
+        <input type="radio" id="muscular_yes" name="muscular" value="はい" required />はい
+        <input type="radio" id="muscular_no" name="muscular" value="いいえ" />いいえ<br />
+        <label for="slim_bones">骨格が細い:</label>
+        <input type="radio" id="slim_bones_yes" name="slim_bones" value="はい" required />はい
+        <input type="radio" id="slim_bones_no" name="slim_bones" value="いいえ" />いいえ<br />
+        <label for="clear_skin">肌がきれい:</label>
+        <input type="radio" id="clear_skin_yes" name="clear_skin" value="はい" required />はい
+        <input type="radio" id="clear_skin_no" name="clear_skin" value="いいえ" />いいえ<br />
+      </div>
+
+      <h3>身体的素質</h3>
+      <div>
+        <label for="strong_arms">腕力が強い:</label>
+        <input type="radio" id="strong_arms_yes" name="strong_arms" value="はい" required />はい
+        <input type="radio" id="strong_arms_no" name="strong_arms" value="いいえ" />いいえ<br />
+        <label for="strong_grip">握力が強い:</label>
+        <input type="radio" id="strong_grip_yes" name="strong_grip" value="はい" required />はい
+        <input type="radio" id="strong_grip_no" name="strong_grip" value="いいえ" />いいえ<br />
+        <label for="strong_shoulders">肩が強い:</label>
+        <input type="radio" id="strong_shoulders_yes" name="strong_shoulders" value="はい" required />はい
+        <input type="radio" id="strong_shoulders_no" name="strong_shoulders" value="いいえ" />いいえ<br />
+        <label for="strong_legs">足腰が強い:</label>
+        <input type="radio" id="strong_legs_yes" name="strong_legs" value="はい" required />はい
+        <input type="radio" id="strong_legs_no" name="strong_legs" value="いいえ" />いいえ<br />
+        <label for="strong_back">背筋力が強い :</label>
+        <input type="radio" id="strong_back_yes" name="strong_back" value="はい" required />はい
+        <input type="radio" id="strong_back_no" name="strong_back" value="いいえ" />いいえ<br />
+        <label for="good_balance">バランス感覚が良い:</label>
+        <input type="radio" id="good_balance_yes" name="good_balance" value="はい" required />はい
+        <input type="radio" id="good_balance_no" name="good_balance" value="いいえ" />いいえ<br />
+        <label for="fast_runner">足が速い:</label>
+        <input type="radio" id="fast_runner_yes" name="fast_runner" value="はい" required />はい
+        <input type="radio" id="fast_runner_no" name="fast_runner" value="いいえ" />いいえ<br />
+        <label for="agile">敏しょう性が高い:</label>
+        <input type="radio" id="agile_yes" name="agile" value="はい" required />はい
+        <input type="radio" id="agile_no" name="agile" value="いいえ" />いいえ<br />
+        <label for="explosive_power">瞬発力がある:</label>
+        <input type="radio" id="explosive_power_yes" name="explosive_power" value="はい" required />はい
+        <input type="radio" id="explosive_power_no" name="explosive_power" value="いいえ" />いいえ<br />
+        <label for="endurance">持久力がある:</label>
+        <input type="radio" id="endurance_yes" name="endurance" value="はい" required />はい
+        <input type="radio" id="endurance_no" name="endurance" value="いいえ" />いいえ<br />
+        <label for="jumping_ability">ジャンプ力がある:</label>
+        <input type="radio" id="jumping_ability_yes" name="jumping_ability" value="はい" required />はい
+        <input type="radio" id="jumping_ability_no" name="jumping_ability" value="いいえ" />いいえ<br />
+        <label for="dynamic_vision">動体視力が良い:</label>
+        <input type="radio" id="dynamic_vision_yes" name="dynamic_vision" value="はい" required />はい
+        <input type="radio" id="dynamic_vision_no" name="dynamic_vision" value="いいえ" />いいえ<br />
+        <label for="hand_eye_coordination">ハンドアイコーディネーションが良い:</label>
+        <input type="radio" id="hand_eye_coordination_yes" name="hand_eye_coordination" value="はい" required />はい
+        <input type="radio" id="hand_eye_coordination_no" name="hand_eye_coordination" value="いいえ" />いいえ<br />
+        <label for="ball_handling">球感が良い:</label>
+        <input type="radio" id="ball_handling_yes" name="ball_handling" value="はい" required />はい
+        <input type="radio" id="ball_handling_no" name="ball_handling" value="いいえ" />いいえ<br />
+        <label for="dexterous">手先が器用:</label>
+        <input type="radio" id="dexterous_yes" name="dexterous" value="はい" required />はい
+        <input type="radio" id="dexterous_no" name="dexterous" value="いいえ" />いいえ<br />
+        <label for="left_handed">左利き:</label>
+        <input type="radio" id="left_handed_yes" name="left_handed" value="はい" required />はい
+        <input type="radio" id="left_handed_no" name="left_handed" value="いいえ" />いいえ<br />
+        <label for="flexible">柔軟性が高い:</label>
+        <input type="radio" id="flexible_yes" name="flexible" value="はい" required />はい
+        <input type="radio" id="flexible_no" name="flexible" value="いいえ" />いいえ<br />
+        <label for="body_expressive">身体表現力が高い:</label>
+        <input type="radio" id="body_expressive_yes" name="body_expressive" value="はい" required />はい
+        <input type="radio" id="body_expressive_no" name="body_expressive" value="いいえ" />いいえ<br />
+      </div>
+
+      <h3>頭脳的素質</h3>
+      <div>
+        <label for="good_memory">記憶力がずば抜けて良い:</label>
+        <input type="radio" id="good_memory_yes" name="good_memory" value="はい" required />はい
+        <input type="radio" id="good_memory_no" name="good_memory" value="いいえ" />いいえ<br />
+        <label for="high_concentration">集中力がずば抜けて高い:</label>
+        <input type="radio" id="high_concentration_yes" name="high_concentration" value="はい" required />はい
+        <input type="radio" id="high_concentration_no" name="high_concentration" value="いいえ" />いいえ<br />
+        <label for="high_comprehension">理解力がずば抜けて高い:</label>
+        <input type="radio" id="high_comprehension_yes" name="high_comprehension" value="はい" required />はい
+        <input type="radio" id="high_comprehension_no" name="high_comprehension" value="いいえ" />いいえ<br />
+        <label for="language_development">言語発達がずば抜けて高い:</label>
+        <input type="radio" id="language_development_yes" name="language_development" value="はい" required />はい
+        <input type="radio" id="language_development_no" name="language_development" value="いいえ" />いいえ<br />
+        <label for="high_numeracy">数字への興味がずば抜けて高い:</label>
+        <input type="radio" id="high_numeracy_yes" name="high_numeracy" value="はい" required />はい
+        <input type="radio" id="high_numeracy_no" name="high_numeracy" value="いいえ" />いいえ<br />
+        <label for="fast_calculation">計算がずば抜けて早い:</label>
+        <input type="radio" id="fast_calculation_yes" name="fast_calculation" value="はい" required />はい
+        <input type="radio" id="fast_calculation_no" name="fast_calculation" value="いいえ" />いいえ<br />
+        <label for="fast_puzzle_solving">パズルを解くのがずば抜けて早い:</label>
+        <input type="radio" id="fast_puzzle_solving_yes" name="fast_puzzle_solving" value="はい" required />はい
+        <input type="radio" id="fast_puzzle_solving_no" name="fast_puzzle_solving" value="いいえ" />いいえ<br />
+        <label for="high_spatial_awareness">空間認識力がずば抜けて高い:</label>
+        <input type="radio" id="high_spatial_awareness_yes" name="high_spatial_awareness" value="はい" required />はい
+        <input type="radio" id="high_spatial_awareness_no" name="high_spatial_awareness" value="いいえ" />いいえ<br />
+        <label for="high_intellectual_curiosity">知的好奇心がずば抜けて旺盛:</label>
+        <input
+          type="radio"
+          id="high_intellectual_curiosity_yes"
+          name="high_intellectual_curiosity"
+          value="はい"
+          required
+        />はい
+        <input
+          type="radio"
+          id="high_intellectual_curiosity_no"
+          name="high_intellectual_curiosity"
+          value="いいえ"
+        />いいえ<br />
+      </div>
+
+      <button type="button" onclick="test()">診断する</button>
     </form>
-    <div id="results" class="section"></div>
+
+    <div id="results"></div>
 
     <script>
-      function generateSoshitsuDiagnosis() {
-        const appearanceScore = calculateAppearanceScore();
-        const physicalScore = calculatePhysicalScore();
-        const mentalScore = calculateMentalScore();
+      function test() {
+        console.log("sss");
+        const form = document.forms.soshitsuForm;
+        console.log(form);
+        const name = form.name.value;
+        const gender = form.gender.value;
+        const age = form.age.value;
 
-        let resultsHTML = "<h3>素質の評価</h3>";
-        resultsHTML += `<p>外見的素質: ${evaluateCategory(appearanceScore, 20, "外見的素質")}</p>`;
-        resultsHTML += `<p>身体的素質: ${evaluateCategory(physicalScore, 18, "身体的素質")}</p>`;
-        resultsHTML += `<p>頭脳的素質: ${evaluateCategory(mentalScore, 9, "頭脳的素質")}</p>`;
+        const soshitsuScores = {
+          appearance: calculateSoshitsuScore([
+            "height",
+            "large_body",
+            "long_limbs",
+            "long_neck",
+            "good_style",
+            "handsome",
+            "big_eyes",
+            "high_nose",
+            "small_face",
+            "sharp_features",
+            "beautiful",
+            "cute_smile",
+            "large_hands",
+            "long_fingers",
+            "strong_bones",
+            "sturdy_build",
+            "broad_shoulders",
+            "muscular",
+            "slim_bones",
+            "clear_skin",
+          ]),
+          physical: calculateSoshitsuScore([
+            "strong_arms",
+            "strong_grip",
+            "strong_shoulders",
+            "strong_legs",
+            "strong_back",
+            "good_balance",
+            "fast_runner",
+            "agile",
+            "explosive_power",
+            "endurance",
+            "jumping_ability",
+            "dynamic_vision",
+            "hand_eye_coordination",
+            "ball_handling",
+            "dexterous",
+            "left_handed",
+            "flexible",
+            "body_expressive",
+          ]),
+          intellectual: calculateSoshitsuScore([
+            "good_memory",
+            "high_concentration",
+            "high_comprehension",
+            "language_development",
+            "high_numeracy",
+            "fast_calculation",
+            "fast_puzzle_solving",
+            "high_spatial_awareness",
+            "high_intellectual_curiosity",
+          ]),
+        };
 
-        document.getElementById("results").innerHTML = resultsHTML;
+        const results = document.getElementById("results");
+        results.innerHTML = generateResultHTML(name, gender, age, soshitsuScores);
       }
 
-      function calculateAppearanceScore() {
-        const appearanceQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-        let score = 0;
-        appearanceQuestions.forEach((q) => {
-          if (document.querySelector(`input[name="appearance${q}"]:checked`).value === "はい") {
-            score++;
-          }
-        });
-        return score;
+      function calculateSoshitsuScore(ids) {
+        return ids
+          .map((id) => (document.querySelector(`input[name="${id}"]:checked`).value === "はい" ? 1 : 0))
+          .reduce((a, b) => a + b, 0);
       }
 
-      function calculatePhysicalScore() {
-        const physicalQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-        let score = 0;
-        physicalQuestions.forEach((q) => {
-          if (document.querySelector(`input[name="physical${q}"]:checked`).value === "はい") {
-            score++;
-          }
-        });
-        return score;
+      function generateResultHTML(name, gender, age, soshitsuScores) {
+        const suffix = gender === "男の子" ? "くん" : "ちゃん";
+
+        return `
+                <h2>${name}${suffix}の診断結果</h2>
+                <p>年齢: ${age}歳</p>
+                <h3>素質の評価</h3>
+                <p>外見的素質: ${soshitsuScores.appearance}項目 - ${generateSummary(
+          "appearance",
+          soshitsuScores.appearance
+        )}</p>
+                <p>身体的素質: ${soshitsuScores.physical}項目 - ${generateSummary(
+          "physical",
+          soshitsuScores.physical
+        )}</p>
+                <p>頭脳的素質: ${soshitsuScores.intellectual}項目 - ${generateSummary(
+          "intellectual",
+          soshitsuScores.intellectual
+        )}</p>
+            `;
       }
 
-      function calculateMentalScore() {
-        const mentalQuestions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        let score = 0;
-        mentalQuestions.forEach((q) => {
-          if (document.querySelector(`input[name="mental${q}"]:checked`).value === "はい") {
-            score++;
-          }
-        });
-        return score;
-      }
+      function generateSummary(type, score) {
+        const summaries = {
+          appearance: [
+            "非常に魅力的な外見を持ち、多くの場面で注目を集めるでしょう。",
+            "魅力的な外見を持ち、人々に良い印象を与えることができます。",
+            "標準的な外見ですが、素敵な笑顔や個性的な魅力があります。",
+            "目立たない外見ですが、内面的な魅力で輝くことができます。",
+            "個性的な外見を持ち、その独自性が魅力となるでしょう。",
+          ],
+          physical: [
+            "非常に優れた身体能力を持ち、スポーツ全般で活躍が期待されます。",
+            "優れた身体能力を持ち、運動が得意です。",
+            "標準的な身体能力を持ち、特定のスポーツで活躍できる可能性があります。",
+            "目立った身体能力はありませんが、努力次第で成長が期待できます。",
+            "特定の身体能力に優れ、それを活かすことで活躍できるでしょう。",
+          ],
+          intellectual: [
+            "非常に高い知的能力を持ち、学問や研究の分野で大きな成果を上げるでしょう。",
+            "高い知的能力を持ち、勉強や知識の吸収が得意です。",
+            "標準的な知的能力を持ち、努力次第で成績を伸ばすことができます。",
+            "特定の分野で優れた知的能力を持ち、それを活かすことで成功するでしょう。",
+            "知的好奇心が旺盛で、多くの知識を吸収することができます。",
+          ],
+        };
 
-      function evaluateCategory(score, total, categoryName) {
-        let percentage = (score / total) * 100;
-        let evaluation = "";
-
-        if (percentage >= 70) {
-          evaluation = `高い（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
-        } else if (percentage >= 30) {
-          evaluation = `普通（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
-        } else {
-          evaluation = `低い（${score}/${total}）：${generateSoshitsuDescription(score, categoryName)}`;
-        }
-
-        return evaluation;
-      }
-
-      function generateSoshitsuDescription(score, categoryName) {
-        switch (categoryName) {
-          case "外見的素質":
-            if (score >= 14) {
-              return "背が高く、手足が長いなど、非常に優れた外見的特徴を持っています。モデルやスポーツ選手に向いています。";
-            } else if (score >= 6) {
-              return "背が高く、手足が長いなど、適度に優れた外見的特徴を持っています。";
-            } else {
-              return "外見的特徴にはあまり恵まれていませんが、他の素質で補うことができます。";
-            }
-          case "身体的素質":
-            if (score >= 13) {
-              return "バランス感覚が良く、敏しょう性が高いなど、非常に優れた身体能力を持っています。多くのスポーツで活躍できるでしょう。";
-            } else if (score >= 5) {
-              return "バランス感覚が良く、敏しょう性が高いなど、適度な身体能力を持っています。";
-            } else {
-              return "身体能力にはあまり恵まれていませんが、他の素質で補うことができます。";
-            }
-          case "頭脳的素質":
-            if (score >= 7) {
-              return "記憶力や集中力、理解力がずば抜けて高いなど、非常に優れた頭脳的素質を持っています。学問や研究に向いています。";
-            } else if (score >= 3) {
-              return "記憶力や集中力、理解力が適度に高いです。";
-            } else {
-              return "頭脳的素質にはあまり恵まれていませんが、他の素質で補うことができます。";
-            }
-        }
+        if (score >= 15) return summaries[type][0];
+        if (score >= 10) return summaries[type][1];
+        if (score >= 5) return summaries[type][2];
+        if (score >= 3) return summaries[type][3];
+        return summaries[type][4];
       }
     </script>
   </body>

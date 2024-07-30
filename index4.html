@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>子供の診断とおすすめの習い事</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h2,
+      h3 {
+        color: #2c3e50;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>子供の診断フォーム</h2>
+    <form id="diagnosisForm">
+      <div>
+        <label for="name">名前（ニックネーム）:</label>
+        <input type="text" id="name" name="name" required /><br />
+        <label for="gender">性別:</label>
+        <input type="radio" id="gender_boy" name="gender" value="男の子" required />男の子
+        <input type="radio" id="gender_girl" name="gender" value="女の子" />女の子<br />
+        <label for="age">年齢:</label>
+        <input type="number" id="age" name="age" required /><br />
+      </div>
+
+      <h3>気質診断項目（ビッグファイブ）</h3>
+      <div>
+        <!-- 気質の質問項目を追加 -->
+        <label>好奇心が強く、新しいことに興味を持ちやすい:</label>
+        <input type="number" name="openness" min="1" max="5" required /><br />
+        <label>勤勉で真面目な性格:</label>
+        <input type="number" name="conscientiousness" min="1" max="5" required /><br />
+        <label>感情が安定しており、ストレスに強い:</label>
+        <input type="number" name="emotional_stability" min="1" max="5" required /><br />
+        <label>外向的で社交的:</label>
+        <input type="number" name="extraversion" min="1" max="5" required /><br />
+        <label>思いやりがあり、他人に対して親切:</label>
+        <input type="number" name="agreeableness" min="1" max="5" required /><br />
+      </div>
+
+      <h3>才能診断項目</h3>
+      <div>
+        <!-- 才能の質問項目を追加 -->
+        <label>立体パズルやオセロ、将棋など頭を使う遊びが好き:</label>
+        <input type="number" name="stem1" min="1" max="5" required /><br />
+        <label>計算が得意で、数字への抵抗感がない:</label>
+        <input type="number" name="stem2" min="1" max="5" required /><br />
+        <label>好奇心が旺盛で質問をよくする:</label>
+        <input type="number" name="stem3" min="1" max="5" required /><br />
+        <label>機械やおもちゃの仕組みに興味がある:</label>
+        <input type="number" name="stem4" min="1" max="5" required /><br />
+        <label>一人でいる時に本を読んでいる:</label>
+        <input type="number" name="language1" min="1" max="5" required /><br />
+        <label>動物や昆虫について学んだり、世話をするのが好き:</label>
+        <input type="number" name="language2" min="1" max="5" required /><br />
+        <label>語彙が豊富で大人とおしゃべりするのが好き:</label>
+        <input type="number" name="language3" min="1" max="5" required /><br />
+        <label>手紙や日記など文章を書くことが好き:</label>
+        <input type="number" name="language4" min="1" max="5" required /><br />
+        <label>体を動かすこと（運動）が好き:</label>
+        <input type="number" name="physical1" min="1" max="5" required /><br />
+        <label>バランス感覚が良く、動きが機敏:</label>
+        <input type="number" name="physical2" min="1" max="5" required /><br />
+        <label>物を投げたりキャッチするのが得意:</label>
+        <input type="number" name="physical3" min="1" max="5" required /><br />
+        <label>手先が器用で細かい作業が得意:</label>
+        <input type="number" name="physical4" min="1" max="5" required /><br />
+        <label>よく歌ったり、ハミングしたりする:</label>
+        <input type="number" name="music1" min="1" max="5" required /><br />
+        <label>音楽やリズムに体が自然に反応する:</label>
+        <input type="number" name="music2" min="1" max="5" required /><br />
+        <label>音が出るおもちゃで遊んだり、音を出すことが好き:</label>
+        <input type="number" name="music3" min="1" max="5" required /><br />
+        <label>TVコマーシャルのメロディや歌詞をすぐ覚える:</label>
+        <input type="number" name="music4" min="1" max="5" required /><br />
+        <label>絵を描いたりデザインするのが好き:</label>
+        <input type="number" name="art1" min="1" max="5" required /><br />
+        <label>図鑑や写真集、映像などを見るのが好き:</label>
+        <input type="number" name="art2" min="1" max="5" required /><br />
+        <label>クラフトや工作などモノ作りが好き:</label>
+        <input type="number" name="art3" min="1" max="5" required /><br />
+        <label>ごっこ遊び、空想遊び、演じるのが好き:</label>
+        <input type="number" name="art4" min="1" max="5" required /><br />
+      </div>
+
+      <h3>素質診断項目</h3>
+      <div>
+        <!-- 素質の質問項目を追加 -->
+        <label>背が高い:</label>
+        <input type="radio" name="height" value="はい" required />はい
+        <input type="radio" name="height" value="いいえ" />いいえ<br />
+        <label>体が大きい:</label>
+        <input type="radio" name="large_body" value="はい" required />はい
+        <input type="radio" name="large_body" value="いいえ" />いいえ<br />
+        <label>手足が長い:</label>
+        <input type="radio" name="long_limbs" value="はい" required />はい
+        <input type="radio" name="long_limbs" value="いいえ" />いいえ<br />
+        <label>首が長い:</label>
+        <input type="radio" name="long_neck" value="はい" required />はい
+        <input type="radio" name="long_neck" value="いいえ" />いいえ<br />
+        <label>スタイルが良い:</label>
+        <input type="radio" name="good_style" value="はい" required />はい
+        <input type="radio" name="good_style" value="いいえ" />いいえ<br />
+        <label>容姿端麗:</label>
+        <input type="radio" name="handsome" value="はい" required />はい
+        <input type="radio" name="handsome" value="いいえ" />いいえ<br />
+        <label>目が大きい:</label>
+        <input type="radio" name="big_eyes" value="はい" required />はい
+        <input type="radio" name="big_eyes" value="いいえ" />いいえ<br />
+        <label>鼻筋が高い:</label>
+        <input type="radio" name="high_nose" value="はい" required />はい
+        <input type="radio" name="high_nose" value="いいえ" />いいえ<br />
+        <label>顔が小さい:</label>
+        <input type="radio" name="small_face" value="はい" required />はい
+        <input type="radio" name="small_face" value="いいえ" />いいえ<br />
+        <label>目立ちがはっきりしている:</label>
+        <input type="radio" name="sharp_features" value="はい" required />はい
+        <input type="radio" name="sharp_features" value="いいえ" />いいえ<br />
+        <label>美人:</label>
+        <input type="radio" name="beautiful" value="はい" required />はい
+        <input type="radio" name="beautiful" value="いいえ" />いいえ<br />
+        <label>笑顔がかわいい:</label>
+        <input type="radio" name="cute_smile" value="はい" required />はい
+        <input type="radio" name="cute_smile" value="いいえ" />いいえ<br />
+        <label>手が大きい:</label>
+        <input type="radio" name="large_hands" value="はい" required />はい
+        <input type="radio" name="large_hands" value="いいえ" />いいえ<br />
+        <label>指が長い:</label>
+        <input type="radio" name="long_fingers" value="はい" required />はい
+        <input type="radio" name="long_fingers" value="いいえ" />いいえ<br />
+        <label>骨太:</label>
+        <input type="radio" name="strong_bones" value="はい" required />はい
+        <input type="radio" name="strong_bones" value="いいえ" />いいえ<br />
+        <label>体格ががっちりしている:</label>
+        <input type="radio" name="sturdy_build" value="はい" required />はい
+        <input type="radio" name="sturdy_build" value="いいえ" />いいえ<br />
+        <label>肩幅が広い:</label>
+        <input type="radio" name="broad_shoulders" value="はい" required />はい
+        <input type="radio" name="broad_shoulders" value="いいえ" />いいえ<br />
+        <label>筋肉質:</label>
+        <input type="radio" name="muscular" value="はい" required />はい
+        <input type="radio" name="muscular" value="いいえ" />いいえ<br />
+        <label>骨格が細い:</label>
+        <input type="radio" name="slim_bones" value="はい" required />はい
+        <input type="radio" name="slim_bones" value="いいえ" />いいえ<br />
+        <label>肌がきれい:</label>
+        <input type="radio" name="clear_skin" value="はい" required />はい
+        <input type="radio" name="clear_skin" value="いいえ" />いいえ<br />
+      </div>
+
+      <h3>身体的素質</h3>
+      <div>
+        <label>腕力が強い:</label>
+        <input type="radio" name="strong_arms" value="はい" required />はい
+        <input type="radio" name="strong_arms" value="いいえ" />いいえ<br />
+        <label>握力が強い:</label>
+        <input type="radio" name="strong_grip" value="はい" required />はい
+        <input type="radio" name="strong_grip" value="いいえ" />いいえ<br />
+        <label>肩が強い:</label>
+        <input type="radio" name="strong_shoulders" value="はい" required />はい
+        <input type="radio" name="strong_shoulders" value="いいえ" />いいえ<br />
+        <label>足腰が強い:</label>
+        <input type="radio" name="strong_legs" value="はい" required />はい
+        <input type="radio" name="strong_legs" value="いいえ" />いいえ<br />
+        <label>背筋力が強い:</label>
+        <input type="radio" name="strong_back" value="はい" required />はい
+        <input type="radio" name="strong_back" value="いいえ" />いいえ<br />
+        <label>バランス感覚が良い:</label>
+        <input type="radio" name="good_balance" value="はい" required />はい
+        <input type="radio" name="good_balance" value="いいえ" />いいえ<br />
+        <label>足が速い:</label>
+        <input type="radio" name="fast_runner" value="はい" required />はい
+        <input type="radio" name="fast_runner" value="いいえ" />いいえ<br />
+        <label>敏しょう性が高い:</label>
+        <input type="radio" name="agile" value="はい" required />はい
+        <input type="radio" name="agile" value="いいえ" />いいえ<br />
+        <label>瞬発力がある:</label>
+        <input type="radio" name="explosive_power" value="はい" required />はい
+        <input type="radio" name="explosive_power" value="いいえ" />いいえ<br />
+        <label>持久力がある:</label>
+        <input type="radio" name="endurance" value="はい" required />はい
+        <input type="radio" name="endurance" value="いいえ" />いいえ<br />
+        <label>ジャンプ力がある:</label>
+        <input type="radio" name="jumping_ability" value="はい" required />はい
+        <input type="radio" name="jumping_ability" value="いいえ" />いいえ<br />
+        <label>動体視力が良い:</label>
+        <input type="radio" name="dynamic_vision" value="はい" required />はい
+        <input type="radio" name="dynamic_vision" value="いいえ" />いいえ<br />
+        <label>ハンドアイコーディネーションが良い:</label>
+        <input type="radio" name="hand_eye_coordination" value="はい" required />はい
+        <input type="radio" name="hand_eye_coordination" value="いいえ" />いいえ<br />
+        <label>球感が良い:</label>
+        <input type="radio" name="ball_handling" value="はい" required />はい
+        <input type="radio" name="ball_handling" value="いいえ" />いいえ<br />
+        <label>手先が器用:</label>
+        <input type="radio" name="dexterous" value="はい" required />はい
+        <input type="radio" name="dexterous" value="いいえ" />いいえ<br />
+        <label>左利き:</label>
+        <input type="radio" name="left_handed" value="はい" required />はい
+        <input type="radio" name="left_handed" value="いいえ" />いいえ<br />
+        <label>柔軟性が高い:</label>
+        <input type="radio" name="flexible" value="はい" required />はい
+        <input type="radio" name="flexible" value="いいえ" />いいえ<br />
+        <label>身体表現力が高い:</label>
+        <input type="radio" name="body_expressive" value="はい" required />はい
+        <input type="radio" name="body_expressive" value="いいえ" />いいえ<br />
+      </div>
+
+      <h3>頭脳的素質</h3>
+      <div>
+        <label>記憶力がずば抜けて良い:</label>
+        <input type="radio" name="good_memory" value="はい" required />はい
+        <input type="radio" name="good_memory" value="いいえ" />いいえ<br />
+        <label>集中力がずば抜けて高い:</label>
+        <input type="radio" name="high_concentration" value="はい" required />はい
+        <input type="radio" name="high_concentration" value="いいえ" />いいえ<br />
+        <label>理解力がずば抜けて高い:</label>
+        <input type="radio" name="high_comprehension" value="はい" required />はい
+        <input type="radio" name="high_comprehension" value="いいえ" />いいえ<br />
+        <label>言語発達がずば抜けて高い:</label>
+        <input type="radio" name="language_development" value="はい" required />はい
+        <input type="radio" name="language_development" value="いいえ" />いいえ<br />
+        <label>数字への興味がずば抜けて高い:</label>
+        <input type="radio" name="high_numeracy" value="はい" required />はい
+        <input type="radio" name="high_numeracy" value="いいえ" />いいえ<br />
+        <label>計算がずば抜けて早い:</label>
+        <input type="radio" name="fast_calculation" value="はい" required />はい
+        <input type="radio" name="fast_calculation" value="いいえ" />いいえ<br />
+        <label>パズルを解くのがずば抜けて早い:</label>
+        <input type="radio" name="fast_puzzle_solving" value="はい" required />はい
+        <input type="radio" name="fast_puzzle_solving" value="いいえ" />いいえ<br />
+        <label>空間認識力がずば抜けて高い:</label>
+        <input type="radio" name="high_spatial_awareness" value="はい" required />はい
+        <input type="radio" name="high_spatial_awareness" value="いいえ" />いいえ<br />
+        <label>知的好奇心がずば抜けて旺盛:</label>
+        <input type="radio" name="high_intellectual_curiosity" value="はい" required />はい
+        <input type="radio" name="high_intellectual_curiosity" value="いいえ" />いいえ<br />
+      </div>
+
+      <button type="button" onclick="input()">診断する</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+      function input() {
+        const form = document.forms.diagnosisForm;
+        const name = form.name.value;
+        const gender = form.gender.value;
+        const age = form.age.value;
+
+        // 気質の評価
+        const openness = form.openness.value;
+        const conscientiousness = form.conscientiousness.value;
+        const emotional_stability = form.emotional_stability.value;
+        const extraversion = form.extraversion.value;
+        const agreeableness = form.agreeableness.value;
+
+        // 才能の評価
+        const stem = calculateTalentScore(["stem1", "stem2", "stem3", "stem4"]);
+        const language = calculateTalentScore(["language1", "language2", "language3", "language4"]);
+        const physical = calculateTalentScore(["physical1", "physical2", "physical3", "physical4"]);
+        const music = calculateTalentScore(["music1", "music2", "music3", "music4"]);
+        const art = calculateTalentScore(["art1", "art2", "art3", "art4"]);
+
+        // 素質の評価
+        const appearance = calculateSoshitsuScore([
+          "height",
+          "large_body",
+          "long_limbs",
+          "long_neck",
+          "good_style",
+          "handsome",
+          "big_eyes",
+          "high_nose",
+          "small_face",
+          "sharp_features",
+          "beautiful",
+          "cute_smile",
+          "large_hands",
+          "long_fingers",
+          "strong_bones",
+          "sturdy_build",
+          "broad_shoulders",
+          "muscular",
+          "slim_bones",
+          "clear_skin",
+        ]);
+        const physical_soshitsu = calculateSoshitsuScore([
+          "strong_arms",
+          "strong_grip",
+          "strong_shoulders",
+          "strong_legs",
+          "strong_back",
+          "good_balance",
+          "fast_runner",
+          "agile",
+          "explosive_power",
+          "endurance",
+          "jumping_ability",
+          "dynamic_vision",
+          "hand_eye_coordination",
+          "ball_handling",
+          "dexterous",
+          "left_handed",
+          "flexible",
+          "body_expressive",
+        ]);
+        const intellectual = calculateSoshitsuScore([
+          "good_memory",
+          "high_concentration",
+          "high_comprehension",
+          "language_development",
+          "high_numeracy",
+          "fast_calculation",
+          "fast_puzzle_solving",
+          "high_spatial_awareness",
+          "high_intellectual_curiosity",
+        ]);
+
+        const results = document.getElementById("results");
+        results.innerHTML = generateResultHTML(
+          name,
+          gender,
+          age,
+          { openness, conscientiousness, emotional_stability, extraversion, agreeableness },
+          { stem, language, physical, music, art },
+          { appearance, physical_soshitsu, intellectual }
+        );
+      }
+
+      function calculateTalentScore(ids) {
+        return ids
+          .map((id) => parseInt(document.querySelector(`input[name="${id}"]`).value))
+          .reduce((a, b) => a + b, 0);
+      }
+
+      function calculateSoshitsuScore(ids) {
+        return ids
+          .map((id) => (document.querySelector(`input[name="${id}"]:checked`).value === "はい" ? 1 : 0))
+          .reduce((a, b) => a + b, 0);
+      }
+
+      function generateResultHTML(name, gender, age, temperament, talents, soshitsu) {
+        const suffix = gender === "男の子" ? "くん" : "ちゃん";
+
+        return `
+                <h2>${name}${suffix}の診断結果</h2>
+                <p>年齢: ${age}歳</p>
+                <h3>気質の評価</h3>
+                <p>開放性: ${temperament.openness} - ${generateTemperamentSummary("openness", temperament.openness)}</p>
+                <p>誠実性: ${temperament.conscientiousness} - ${generateTemperamentSummary(
+          "conscientiousness",
+          temperament.conscientiousness
+        )}</p>
+                <p>情緒安定性: ${temperament.emotional_stability} - ${generateTemperamentSummary(
+          "emotional_stability",
+          temperament.emotional_stability
+        )}</p>
+                <p>外向性: ${temperament.extraversion} - ${generateTemperamentSummary(
+          "extraversion",
+          temperament.extraversion
+        )}</p>
+                <p>協調性: ${temperament.agreeableness} - ${generateTemperamentSummary(
+          "agreeableness",
+          temperament.agreeableness
+        )}</p>
+                <h3>才能の評価</h3>
+                <p>STEM的才能: ${talents.stem}/20</p>
+                <p>言語・博物学的才能: ${talents.language}/20</p>
+                <p>運動的才能: ${talents.physical}/20</p>
+                <p>音楽的才能: ${talents.music}/20</p>
+                <p>アート的才能: ${talents.art}/20</p>
+                <h3>素質の評価</h3>
+                <p>外見的素質: ${soshitsu.appearance}項目 - ${generateSummary("appearance", soshitsu.appearance)}</p>
+                <p>身体的素質: ${soshitsu.physical_soshitsu}項目 - ${generateSummary(
+          "physical",
+          soshitsu.physical_soshitsu
+        )}</p>
+                <p>頭脳的素質: ${soshitsu.intellectual}項目 - ${generateSummary(
+          "intellectual",
+          soshitsu.intellectual
+        )}</p>
+                <h3>総合評価とおすすめの習い事</h3>
+                ${generateOverallSummary(temperament, talents, soshitsu)}
+            `;
+      }
+
+      function generateTemperamentSummary(type, score) {
+        const summaries = {
+          openness: [
+            "非常に高い探究心と好奇心を持ち、学ぶことが大好きです。",
+            "適度な探究心と好奇心を持ち、新しいことにも興味を示します。",
+            "新しい経験に対して慎重で、変化をあまり好まない性格です。",
+          ],
+          conscientiousness: [
+            "非常に計画的で、常に慎重に物事を進めます。",
+            "計画性があり、慎重に物事を進めますが、時には柔軟に対応することもあります。",
+            "計画性が低く、時に衝動的に行動することがあります。",
+          ],
+          emotional_stability: [
+            "感情のコントロールが上手で、ストレスに対して非常に強いです。",
+            "情緒が安定しており、ストレスに対して適度な耐性があります。",
+            "感情の起伏が激しく、ストレスに弱い傾向があります。",
+          ],
+          extraversion: [
+            "非常に社交的で、活発に友達と過ごすことができます。",
+            "社交的な面もありながら、一人の時間も大切にします。",
+            "内向的で、静かな環境を好む性格です。",
+          ],
+          agreeableness: [
+            "非常に思いやりがあり、他人の気持ちを深く理解することができます。",
+            "思いやりがあり、優しい性格ですが、自己主張も大切にします。",
+            "自己中心的で、競争心が強い一面があります。",
+          ],
+        };
+
+        if (score >= 4) return summaries[type][0];
+        if (score >= 2) return summaries[type][1];
+        return summaries[type][2];
+      }
+
+      function generateSummary(type, score) {
+        const summaries = {
+          appearance: [
+            "非常に魅力的な外見を持ち、多くの場面で注目を集めるでしょう。",
+            "魅力的な外見を持ち、人々に良い印象を与えることができます。",
+            "標準的な外見ですが、素敵な笑顔や個性的な魅力があります。",
+            "目立たない外見ですが、内面的な魅力で輝くことができます。",
+            "個性的な外見を持ち、その独自性が魅力となるでしょう。",
+          ],
+          physical: [
+            "非常に優れた身体能力を持ち、スポーツ全般で活躍が期待されます。",
+            "優れた身体能力を持ち、運動が得意です。",
+            "標準的な身体能力を持ち、特定のスポーツで活躍できる可能性があります。",
+            "目立った身体能力はありませんが、努力次第で成長が期待できます。",
+            "特定の身体能力に優れ、それを活かすことで活躍できるでしょう。",
+          ],
+          intellectual: [
+            "非常に高い知的能力を持ち、学問や研究の分野で大きな成果を上げるでしょう。",
+            "高い知的能力を持ち、勉強や知識の吸収が得意です。",
+            "標準的な知的能力を持ち、努力次第で成績を伸ばすことができます。",
+            "特定の分野で優れた知的能力を持ち、それを活かすことで成功するでしょう。",
+            "知的好奇心が旺盛で、多くの知識を吸収することができます。",
+          ],
+        };
+
+        if (score >= 15) return summaries[type][0];
+        if (score >= 10) return summaries[type][1];
+        if (score >= 5) return summaries[type][2];
+        if (score >= 3) return summaries[type][3];
+        return summaries[type][4];
+      }
+
+      function generateOverallSummary(temperament, talents, soshitsu) {
+        // ここに総合評価のロジックとおすすめの習い事の表示を追加します
+        const suitabilityScores = calculateSuitabilityScores(temperament, talents, soshitsu);
+
+        const sortedActivities = Object.entries(suitabilityScores).sort((a, b) => b[1] - a[1]);
+
+        let overallSummary = `
+                <h4>総合評価</h4>
+                <p>【${calculateMainTrait(temperament)}】の気質を持ち、${calculateMainTalent(
+          talents
+        )}の才能が際立っています。また、${calculateMainSoshitsu(soshitsu)}の素質があります。</p>
+                <h4>おすすめの習い事トップ10</h4>
+                <ol>
+            `;
+
+        sortedActivities.slice(0, 10).forEach(([activity, score]) => {
+          overallSummary += `<li>${activity} - 適性度: ${score}%</li>`;
+        });
+
+        overallSummary += `</ol>`;
+
+        return overallSummary;
+      }
+
+      function calculateSuitabilityScores(temperament, talents, soshitsu) {
+        const activityWeights = {
+          バスケットボール: {
+            openness: 2,
+            conscientiousness: 2,
+            emotional_stability: 2,
+            extraversion: 3,
+            agreeableness: 1,
+            stem: 0,
+            language: 0,
+            physical: 5,
+            music: 0,
+            art: 0,
+            appearance: 3,
+            physical_soshitsu: 5,
+            intellectual: 0,
+          },
+          ピアノ: {
+            openness: 3,
+            conscientiousness: 3,
+            emotional_stability: 2,
+            extraversion: 1,
+            agreeableness: 1,
+            stem: 0,
+            language: 2,
+            physical: 1,
+            music: 5,
+            art: 0,
+            appearance: 0,
+            physical_soshitsu: 1,
+            intellectual: 2,
+          },
+          絵画教室: {
+            openness: 4,
+            conscientiousness: 2,
+            emotional_stability: 1,
+            extraversion: 0,
+            agreeableness: 1,
+            stem: 0,
+            language: 1,
+            physical: 0,
+            music: 0,
+            art: 5,
+            appearance: 1,
+            physical_soshitsu: 1,
+            intellectual: 2,
+          },
+          将棋クラブ: {
+            openness: 2,
+            conscientiousness: 3,
+            emotional_stability: 2,
+            extraversion: 0,
+            agreeableness: 1,
+            stem: 5,
+            language: 0,
+            physical: 0,
+            music: 0,
+            art: 0,
+            appearance: 0,
+            physical_soshitsu: 0,
+            intellectual: 5,
+          },
+          サッカーチーム: {
+            openness: 2,
+            conscientiousness: 2,
+            emotional_stability: 2,
+            extraversion: 3,
+            agreeableness: 2,
+            stem: 0,
+            language: 0,
+            physical: 5,
+            music: 0,
+            art: 0,
+            appearance: 3,
+            physical_soshitsu: 5,
+            intellectual: 0,
+          },
+          科学実験教室: {
+            openness: 5,
+            conscientiousness: 3,
+            emotional_stability: 2,
+            extraversion: 0,
+            agreeableness: 1,
+            stem: 5,
+            language: 2,
+            physical: 0,
+            music: 0,
+            art: 0,
+            appearance: 0,
+            physical_soshitsu: 0,
+            intellectual: 4,
+          },
+          作文教室: {
+            openness: 3,
+            conscientiousness: 3,
+            emotional_stability: 2,
+            extraversion: 0,
+            agreeableness: 2,
+            stem: 0,
+            language: 5,
+            physical: 0,
+            music: 0,
+            art: 2,
+            appearance: 0,
+            physical_soshitsu: 0,
+            intellectual: 3,
+          },
+          ダンス教室: {
+            openness: 2,
+            conscientiousness: 1,
+            emotional_stability: 1,
+            extraversion: 5,
+            agreeableness: 2,
+            stem: 0,
+            language: 0,
+            physical: 5,
+            music: 3,
+            art: 0,
+            appearance: 3,
+            physical_soshitsu: 5,
+            intellectual: 0,
+          },
+          図鑑クラブ: {
+            openness: 4,
+            conscientiousness: 2,
+            emotional_stability: 2,
+            extraversion: 0,
+            agreeableness: 2,
+            stem: 3,
+            language: 5,
+            physical: 0,
+            music: 0,
+            art: 2,
+            appearance: 0,
+            physical_soshitsu: 0,
+            intellectual: 4,
+          },
+          ロボット制作クラブ: {
+            openness: 5,
+            conscientiousness: 3,
+            emotional_stability: 2,
+            extraversion: 0,
+            agreeableness: 1,
+            stem: 5,
+            language: 2,
+            physical: 0,
+            music: 0,
+            art: 1,
+            appearance: 0,
+            physical_soshitsu: 0,
+            intellectual: 4,
+          },
+        };
+
+        const suitabilityScores = {};
+
+        for (const [activity, weights] of Object.entries(activityWeights)) {
+          let score = 0;
+
+          for (const [trait, weight] of Object.entries(weights)) {
+            if (temperament[trait] !== undefined) {
+              score += temperament[trait] * weight;
+            } else if (talents[trait] !== undefined) {
+              score += talents[trait] * weight;
+            } else if (soshitsu[trait] !== undefined) {
+              score += soshitsu[trait] * weight;
+            }
+          }
+
+          suitabilityScores[activity] = (score / Object.values(weights).reduce((a, b) => a + b, 0)) * 100;
+        }
+
+        return suitabilityScores;
+      }
+
+      function calculateMainTrait(temperament) {
+        const traits = ["openness", "conscientiousness", "emotional_stability", "extraversion", "agreeableness"];
+        const maxTrait = traits.reduce((a, b) => (temperament[a] > temperament[b] ? a : b));
+        return generateTemperamentSummary(maxTrait, 5);
+      }
+
+      function calculateMainTalent(talents) {
+        const talentAreas = ["stem", "language", "physical", "music", "art"];
+        const maxTalent = talentAreas.reduce((a, b) => (talents[a] > talents[b] ? a : b));
+        return {
+          stem: "STEM的才能",
+          language: "言語・博物学的才能",
+          physical: "運動的才能",
+          music: "音楽的才能",
+          art: "アート的才能",
+        }[maxTalent];
+      }
+
+      function calculateMainSoshitsu(soshitsu) {
+        const soshitsuAreas = ["appearance", "physical_soshitsu", "intellectual"];
+        const maxSoshitsu = soshitsuAreas.reduce((a, b) => (soshitsu[a] > soshitsu[b] ? a : b));
+        return generateSummary(maxSoshitsu, 5);
+      }
+    </script>
+  </body>
+</html>
